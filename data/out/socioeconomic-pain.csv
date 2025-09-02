@@ -1,0 +1,263 @@
+Country,pain
+Algeria,0.276
+Aruba,0.7244640610792704
+Afghanistan,0.6169608589867067
+Angola,0.513
+Albania,0.294
+Andorra,0.719591391698042
+United Arab Emirates,0.262
+Argentina,0.407
+Armenia,0.2789999999999999
+American Samoa,0.8280272525305052
+Antigua and Barbuda,0.7646569751646741
+Australia,0.3429999999999999
+Austria,0.307
+Azerbaijan,0.4992707039403245
+Burundi,0.375
+Belgium,0.266
+Benin,0.344
+Burkina Faso,0.374
+Bangladesh,0.3339999999999999
+Bulgaria,0.39
+Bahrain,0.5392590211282443
+"Bahamas, The",0.6255353981719557
+Bosnia and Herzegovina,0.33
+Belarus,0.244
+Belize,0.7315543991531595
+Bermuda,0.6629084916057615
+Bolivia,0.409
+Brazil,0.52
+Barbados,0.6832977711241927
+Brunei Darussalam,0.6075768566289927
+Bhutan,0.285
+Botswana,0.5329999999999999
+Central African Republic,0.43
+Canada,0.317
+Switzerland,0.337
+Channel Islands,0.6321242992683846
+Chile,0.43
+China,0.364
+Cote d'Ivoire,0.5074479370510144
+Cameroon,0.422
+"Congo, Dem. Rep.",0.5205137833684124
+"Congo, Rep.",0.6168059621463469
+Colombia,0.5479999999999999
+Comoros,0.4529999999999999
+Cabo Verde,0.7454348186301959
+Costa Rica,0.4695
+Cuba,0.4776177970292027
+Curacao,0.734700751720891
+Cayman Islands,0.6786235851245989
+Cyprus,0.313
+Czechia,0.40802838148628934
+Germany,0.3204999999999999
+Djibouti,0.416
+Dominica,0.8382913315340552
+Denmark,0.283
+Dominican Republic,0.37
+Ecuador,0.4504999999999999
+"Egypt, Arab Rep.",0.37355104179193893
+Eritrea,0.7534062315003456
+Spain,0.3389999999999999
+Estonia,0.318
+Ethiopia,0.35
+Finland,0.2769999999999999
+Fiji,0.307
+France,0.315
+Faroe Islands,0.7136493156201047
+"Micronesia, Fed. Sts.",0.8634067281805152
+Gabon,0.38
+United Kingdom,0.324
+Georgia,0.3385
+Ghana,0.435
+Guinea,0.296
+"Gambia, The",0.7467054491803612
+Guinea-Bissau,0.3339999999999999
+Equatorial Guinea,0.631660443465925
+Greece,0.3289999999999999
+Grenada,0.4379999999999999
+Greenland,0.3389999999999999
+Guatemala,0.483
+Guam,0.6775364163383523
+Guyana,0.45
+"Hong Kong SAR, China",0.39318870980356996
+Honduras,0.482
+Croatia,0.289
+Haiti,0.411
+Hungary,0.292
+Indonesia,0.372
+Isle of Man,0.67141482504278
+India,0.3279999999999999
+Ireland,0.301
+"Iran, Islamic Rep.",0.38783122615325566
+Iraq,0.295
+Iceland,0.261
+Israel,0.379
+Italy,0.348
+Jamaica,0.402
+Jordan,0.337
+Japan,0.3289999999999999
+Kazakhstan,0.292
+Kenya,0.387
+Kyrgyz Republic,0.6370846014001416
+Cambodia,0.5667107654801183
+Kiribati,0.278
+St. Kitts and Nevis,0.8067580934756503
+"Korea, Rep.",0.2862462339368104
+Kuwait,0.4397951647271093
+Lao PDR,0.6117014587158831
+Lebanon,0.5847575677873443
+Liberia,0.353
+Libya,0.5371502771600224
+St. Lucia,0.7534053550034644
+Liechtenstein,0.6663580914203616
+Sri Lanka,0.377
+Lesotho,0.449
+Lithuania,0.367
+Luxembourg,0.327
+Latvia,0.3429999999999999
+"Macao SAR, China",0.5883248472769498
+St. Martin (French part),0.8220017404056652
+Morocco,0.395
+Monaco,0.6538550090170709
+Moldova,0.257
+Madagascar,0.426
+Maldives,0.293
+Mexico,0.435
+Marshall Islands,0.355
+North Macedonia,0.335
+Mali,0.357
+Malta,0.314
+Myanmar,0.307
+Montenegro,0.3429999999999999
+Mongolia,0.314
+Northern Mariana Islands,0.8147125250941294
+Mozambique,0.504
+Mauritania,0.32
+Mauritius,0.368
+Malawi,0.385
+Malaysia,0.407
+North America,0.09022624211954773
+Namibia,0.591
+New Caledonia,0.6427997212523343
+Niger,0.3289999999999999
+Nigeria,0.351
+Nicaragua,0.462
+Netherlands,0.257
+Norway,0.2769999999999999
+Nepal,0.5450985953537528
+Nauru,0.324
+New Zealand,0.4193869928423983
+Oman,0.47301625826135624
+Pakistan,0.296
+Panama,0.489
+Peru,0.4029999999999999
+Philippines,0.407
+Palau,0.9104136307535612
+Papua New Guinea,0.419
+Poland,0.285
+Puerto Rico,0.47377062746449455
+Portugal,0.346
+Paraguay,0.451
+West Bank and Gaza,0.5980830910978167
+Pacific island small states,0.6417358471410949
+French Polynesia,0.678024222882495
+Qatar,0.351
+Romania,0.3389999999999999
+Russian Federation,0.2655364005675861
+Rwanda,0.437
+South Asia,0.2190352491739815
+Saudi Arabia,0.3146755044916298
+Sudan,0.342
+Senegal,0.362
+Singapore,0.4589999999999999
+Solomon Islands,0.371
+Sierra Leone,0.357
+El Salvador,0.3879999999999999
+San Marino,0.7608778884106974
+Somalia,0.368
+Serbia,0.331
+South Sudan,0.441
+Sao Tome and Principe,0.407
+Suriname,0.392
+Slovak Republic,0.47253008516975004
+Slovenia,0.243
+Sweden,0.298
+Eswatini,0.546
+Sint Maarten (Dutch part),0.7724664713662123
+Seychelles,0.321
+Syrian Arab Republic,0.6356396477434008
+Turks and Caicos Islands,0.79494906000247
+Chad,0.374
+Togo,0.379
+Thailand,0.349
+Tajikistan,0.34
+Turkmenistan,0.408
+Timor-Leste,0.287
+Tonga,0.271
+Trinidad and Tobago,0.402
+Tunisia,0.337
+Turkiye,0.32873515552189814
+Tuvalu,0.391
+Tanzania,0.405
+Uganda,0.427
+Ukraine,0.256
+Uruguay,0.406
+United States of America,0.4054999999999999
+Uzbekistan,0.312
+St. Vincent and the Grenadines,0.8077085863048741
+"Venezuela, RB",0.3727342235299891
+Virgin Islands (U.S.),0.7037832539377243
+Vietnam,0.361
+Vanuatu,0.3229999999999999
+Samoa,0.8168251046447816
+Kosovo,0.6473988766511726
+"Yemen, Rep.",0.5895206046244151
+South Africa,0.63
+Zambia,0.515
+Zimbabwe,0.503
+World,0.0
+Africa Eastern and Southern,0.3109151486662453
+Africa Western and Central,0.3309363771954846
+Arab World,0.23325904645509124
+Central Europe and the Baltics,0.2753588987441404
+Caribbean small states,0.4876837280954883
+East Asia & Pacific (excluding high income),0.1087018343801949
+Early-demographic dividend,0.13748379460431173
+East Asia & Pacific,0.0829233298031267
+Europe & Central Asia (excluding high income),0.22293392056221792
+Europe & Central Asia,0.09662387366243258
+Euro area,0.13742720035366657
+European Union,0.12556642629369966
+Fragile and conflict affected situations,0.2773428738132727
+High income,0.03428391363485108
+Heavily indebted poor countries (HIPC),0.3239618105048131
+IBRD only,0.06860338089615861
+IDA & IBRD total,0.06357180178411606
+IDA total,0.24964364844503123
+IDA blend,0.3106875700366565
+IDA only,0.28731570801381123
+Latin America & Caribbean (excluding high income),0.20542592068486704
+Latin America & Caribbean,0.19396256608624068
+Middle East & North Africa,0.2181954570608128
+OECD members,0.03651906932982119
+Other small states,0.3661767290906387
+Latin America & the Caribbean (IDA & IBRD countries),0.19741076670245228
+Middle East & North Africa (IDA & IBRD countries),0.2865551815732191
+South Asia (IDA & IBRD),0.2190352491739815
+Sub-Saharan Africa (IDA & IBRD countries),0.2718269753299914
+Sub-Saharan Africa (excluding high income),0.27188115167446003
+Sub-Saharan Africa,0.2718269753299914
+Small states,0.35375808644879575
+East Asia & Pacific (IDA & IBRD countries),0.10878899232434058
+Europe & Central Asia (IDA & IBRD countries),0.2069633611734837
+Least developed countries: UN classification,0.2975263281326375
+Low income,0.3672702511830486
+Lower middle income,0.17574314375442765
+Low & middle income,0.06667911972036844
+Late-demographic dividend,0.08905124373796237
+Middle income,0.06762988977053053
+Middle East & North Africa (excluding high income),0.28575554034193923
+Upper middle income,0.08430287181094863
+Pre-demographic dividend,0.28850054425771327
+Post-demographic dividend,0.04084711189104293

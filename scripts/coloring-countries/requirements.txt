@@ -1,0 +1,5 @@
+geopandas>=0.13
+pandas
+matplotlib
+mapclassify
+pyproj

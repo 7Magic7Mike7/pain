@@ -1,0 +1,127 @@
+"flagCode","country","OpiateUse_TotalUseBestEstimate_pct_2024update","OpiateUse_TotalUseLowEstimate_pct_2024update","OpiateUse_TotalUseHighEstimate_pct_2024update","OpiateUse_DataYear_2024update"
+"IR","Iran",3.31,,,2015
+"AF","Afghanistan",2.65,2.34,2.96,2009
+"SC","Seychelles",2.3,,,2011
+"EG","Egypt",1.76,1.39,2.14,2016
+"PL","Poland",1.7,,,2016
+"AZ","Azerbaijan",1.5,1.28,1.72,2010
+"IN","India",1.42,,,2018
+"RU","Russia",1.4,1.4,1.4,2010
+"MV","Maldives",1.34,,,2012
+"UA","Ukraine",1.05,0.88,1.23,2012
+"KZ","Kazakhstan",1.03,0.97,1.08,2015
+"PK","Pakistan",1,0.7,1.5,2012
+"MY","Malaysia",0.94,,,2009
+"UZ","Uzbekistan",0.93,0.78,1.08,2015
+"US","United States",0.91,0.74,1.08,2018
+"CI","Ivory Coast",0.9,0.86,0.94,2017
+"KG","Kyrgyzstan",0.89,0.82,0.96,2015
+"MM","Myanmar",0.8,0.7,0.9,2010
+"MU","Mauritius",0.78,,,2017
+"BY","Belarus",0.77,,,2016
+"IT","Italy",0.76,0.72,0.79,2019
+"GB","United Kingdom",0.74,0.73,0.77,2016
+"GE","Georgia",0.72,0.71,0.74,2010
+"MA","Morocco",0.71,,,2017
+"JM","Jamaica",0.7,0.3,1.1,2006
+"IE","Ireland",0.62,0.61,0.7,2014
+"LK","Sri Lanka",0.61,,,2019
+"MT","Malta",0.61,,,2016
+"LV","Latvia",0.57,0.47,0.7,2017
+"AT","Austria",0.54,0.52,0.55,2019
+"VN","Vietnam",0.53,,,2011
+"TJ","Tajikistan",0.52,0.51,0.52,2015
+"PT","Portugal",0.45,0.3,0.7,2018
+"AL","Albania",0.45,,,2007
+"LU","Luxembourg",0.45,,,2015
+"CH","Switzerland",0.43,0.39,0.47,2015
+"ZA","South Africa",0.41,,,2008
+"IL","Israel",0.4,0.3,0.5,2016
+"UY","Uruguay",0.4,,,2018
+"MK","North Macedonia",0.4,0.4,0.5,2005
+"NP","Nepal",0.39,,,2019
+"BD","Bangladesh",0.37,,,2003
+"ZM","Zambia",0.37,,,2003
+"LA","Laos",0.37,,,2008
+"BG","Bulgaria",0.37,,,2017
+"SI","Slovenia",0.36,0.32,0.42,2017
+"HR","Croatia",0.35,,,2012
+"FR","France",0.32,0.31,0.33,2019
+"TM","Turkmenistan",0.32,,,2007
+"SG","Singapore",0.32,0.27,0.37,2010
+"RO","Romania",0.3,,,2019
+"BA","Bosnia and Herzegovina",0.3,,,2009
+"BZ","Belize",0.3,,,2005
+"NO","Norway",0.27,,,2013
+"LT","Lithuania",0.24,0.23,0.24,2007
+"DE","Germany",0.22,,,2014
+"KE","Kenya",0.22,,,2012
+"TD","Chad",0.22,,,2004
+"GR","Greece",0.22,0.18,0.27,2019
+"BS","Bahamas",0.22,,,2003
+"ES","Spain",0.21,0.14,0.28,2018
+"BR","Brazil",0.2,,,2012
+"TH","Thailand",0.2,,,2007
+"NE","Niger",0.2,,,2004
+"TW","Taiwan",0.2,,,2005
+"HU","Hungary",0.2,,,2019
+"LB","Lebanon",0.2,,,2003
+"AM","Armenia",0.2,0.17,0.24,2007
+"LI","Liechtenstein",0.2,,,2005
+"CN","China",0.19,0.13,0.25,2012
+"PE","Peru",0.18,,,2005
+"CY","Cyprus",0.18,0.15,0.22,2016
+"CV","Cape Verde",0.18,,,2004
+"SL","Sierra Leone",0.17,,,2004
+"LR","Liberia",0.17,,,2004
+"KW","Kuwait",0.17,,,2004
+"SZ","Eswatini",0.17,,,2004
+"SO","Somalia",0.16,,,2004
+"HN","Honduras",0.15,,,2005
+"BM","Bermuda",0.15,0.1,0.2,2009
+"GH","Ghana",0.14,,,2004
+"RW","Rwanda",0.14,,,2004
+"LY","Libya",0.14,,,2004
+"CD","DR Congo",0.13,,,2004
+"NL","Netherlands",0.13,0.11,0.15,2012
+"CG","Republic of the Congo",0.13,,,2004
+"TN","Tunisia",0.12,,,2011
+"MD","Moldova",0.12,,,2011
+"SV","El Salvador",0.11,,,2005
+"BB","Barbados",0.11,0.1,0.13,2006
+"MX","Mexico",0.1,,,2016
+"AU","Australia",0.1,,,2019
+"CZ","Czech Republic",0.1,,,2019
+"RS","Serbia",0.1,,,2018
+"DK","Denmark",0.1,,,2017
+"FI","Finland",0.1,,,2018
+"SK","Slovakia",0.1,,,2019
+"NZ","New Zealand",0.1,0.1,0.3,2008
+"NG","Nigeria",0.09,,0.21,2017
+"SN","Senegal",0.08,,,2006
+"ID","Indonesia",0.07,0.07,0.07,2019
+"AR","Argentina",0.07,0.05,0.09,2010
+"BO","Bolivia",0.07,,,2004
+"HT","Haiti",0.07,,,2006
+"DO","Dominican Republic",0.07,0.05,0.09,2008
+"DZ","Algeria",0.06,0.05,0.06,2010
+"SA","Saudi Arabia",0.06,,,2006
+"UG","Uganda",0.05,,,2004
+"CF","Central African Republic",0.05,,,2004
+"JP","Japan",0.04,,,2019
+"PH","Philippines",0.04,0.03,0.04,2011
+"GT","Guatemala",0.04,,,2005
+"KH","Cambodia",0.04,,,2007
+"ZW","Zimbabwe",0.04,,,2004
+"EE","Estonia",0.04,,,2018
+"TR","Turkey",0.03,,,2018
+"VE","Venezuela",0.03,,,2011
+"PY","Paraguay",0.03,,,2003
+"CR","Costa Rica",0.03,,,2015
+"CO","Colombia",0.02,0.01,0.03,2019
+"SY","Syria",0.02,,,2005
+"AE","United Arab Emirates",0.02,,,2004
+"NI","Nicaragua",0.02,,,2006
+"EC","Ecuador",0.01,,,2013
+"KR","South Korea",,,,2004
+"CL","Chile",,,,2018
