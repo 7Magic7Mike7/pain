@@ -1,0 +1,172 @@
+sov_a3,Country,value
+AFG,Afghanistan,0.0799999999999999
+DZA,Algeria,0.0799999999999999
+AGO,Angola,0.0699999999999999
+ARG,Argentina,0.14
+ARM,Armenia,0.16
+AU1,Australia,0.1899999999999999
+AUT,Austria,0.13
+AZE,Azerbaijan,0.06
+BGD,Bangladesh,0.27
+BLR,Belarus,0.02
+BEL,Belgium,0.02
+BLZ,Belize,0.2199999999999999
+BEN,Benin,0.0899999999999999
+BTN,Bhutan,0.18
+BOL,Bolivia,0.15
+BIH,Bosnia and Herzegovina,0.1099999999999999
+BWA,Botswana,0.02
+BRA,Brazil,0.12
+BRN,Brunei,0.15
+BGR,Bulgaria,0.06
+BFA,Burkina Faso,0.01
+BDI,Burundi,0.0999999999999999
+KHM,Cambodia,0.2099999999999999
+CMR,Cameroon,0.16
+CAN,Canada,0.03
+CAF,Central African Republic,0.06
+TCD,Chad,0.0899999999999999
+CHL,Chile,0.24
+CH1,China,0.28
+COL,Colombia,0.26
+CRI,Costa Rica,0.16
+HRV,Croatia,0.1099999999999999
+CU1,Cuba,0.3199999999999999
+CYP,Cyprus,0.0799999999999999
+CZE,Czechia,0.03
+DN1,Denmark,0.02
+DJI,Djibouti,0.1899999999999999
+DOM,Dominican Republic,0.27
+TLS,East Timor,0.16
+ECU,Ecuador,0.35
+EGY,Egypt,0.0999999999999999
+SLV,El Salvador,0.1899999999999999
+GNQ,Equatorial Guinea,0.18
+ERI,Eritrea,0.12
+EST,Estonia,0.01
+ETH,Ethiopia,0.15
+FJI,Fiji,0.31
+FI1,Finland,0.01
+FR1,France,0.17
+GAB,Gabon,0.05
+GMB,Gambia,0.04
+GEO,Georgia,0.0699999999999999
+DEU,Germany,0.03
+GHA,Ghana,0.17
+GRC,Greece,0.13
+GTM,Guatemala,0.28
+GIN,Guinea,0.1099999999999999
+GNB,Guinea-Bissau,0.0899999999999999
+GUY,Guyana,0.13
+HTI,Haiti,0.28
+HND,Honduras,0.26
+HUN,Hungary,0.0899999999999999
+ISL,Iceland,0.12
+IND,India,0.3299999999999999
+IDN,Indonesia,0.25
+IRN,Iran,0.14
+IRQ,Iraq,0.2099999999999999
+IRL,Ireland,0.12
+IS1,Israel,0.28
+ITA,Italy,0.13
+JAM,Jamaica,0.36
+JPN,Japan,0.25
+JOR,Jordan,0.04
+KA1,Kazakhstan,0.12
+KEN,Kenya,0.2299999999999999
+KWT,Kuwait,0.14
+KGZ,Kyrgyzstan,0.1099999999999999
+LAO,Laos,0.17
+LVA,Latvia,0.01
+LBN,Lebanon,0.04
+LSO,Lesotho,0.06
+LBR,Liberia,0.0899999999999999
+LBY,Libya,0.02
+LTU,Lithuania,0.01
+LUX,Luxembourg,0.02
+MDG,Madagascar,0.26
+MWI,Malawi,0.1899999999999999
+MYS,Malaysia,0.31
+MLI,Mali,0.02
+MRT,Mauritania,0.03
+MEX,Mexico,0.3199999999999999
+MDA,Moldova,0.03
+MNG,Mongolia,0.05
+MNE,Montenegro,0.16
+MAR,Morocco,0.12
+MOZ,Mozambique,0.2199999999999999
+MMR,Myanmar,0.2099999999999999
+NAM,Namibia,0.03
+NPL,Nepal,0.15
+NL1,Netherlands,0.0899999999999999
+NZ1,New Zealand,0.36
+NIC,Nicaragua,0.18
+NER,Niger,0.0699999999999999
+NGA,Nigeria,0.15
+PRK,North Korea,0.0999999999999999
+MKD,North Macedonia,0.0799999999999999
+NOR,Norway,0.05
+OMN,Oman,0.12
+PAK,Pakistan,0.18
+PAN,Panama,0.28
+PNG,Papua New Guinea,0.18
+PRY,Paraguay,0.05
+PER,Peru,0.26
+PHL,Philippines,0.3299999999999999
+POL,Poland,0.02
+PRT,Portugal,0.0999999999999999
+QAT,Qatar,0.1899999999999999
+ROU,Romania,0.1099999999999999
+RUS,Russia,0.05
+RWA,Rwanda,0.1099999999999999
+SAU,Saudi Arabia,0.1099999999999999
+SEN,Senegal,0.0699999999999999
+SLE,Sierra Leone,0.06
+SVK,Slovakia,0.03
+SVN,Slovenia,0.0899999999999999
+SLB,Solomon Islands,0.25
+SOM,Somalia,0.0999999999999999
+ZAF,South Africa,0.2299999999999999
+KOR,South Korea,0.3199999999999999
+SDS,South Sudan,0.0699999999999999
+ESP,Spain,0.14
+LKA,Sri Lanka,0.4499999999999999
+SDN,Sudan,0.0899999999999999
+SUR,Suriname,0.01
+SWE,Sweden,0.01
+CHE,Switzerland,0.04
+SYR,Syria,0.05
+TJK,Tajikistan,0.01
+THA,Thailand,0.24
+TGO,Togo,0.13
+TTO,Trinidad and Tobago,0.13
+TUN,Tunisia,0.05
+TUR,Turkey,0.0999999999999999
+TKM,Turkmenistan,0.02
+UGA,Uganda,0.26
+UKR,Ukraine,0.06
+ARE,United Arab Emirates,0.16
+GB1,United Kingdom,0.03
+URY,Uruguay,0.0899999999999999
+UZB,Uzbekistan,0.03
+VUT,Vanuatu,0.3299999999999999
+VEN,Venezuela,0.1899999999999999
+VNM,Vietnam,0.3
+SAH,Western Sahara,0.03
+YEM,Yemen,0.13
+ZMB,Zambia,0.12
+ZWE,Zimbabwe,0.2099999999999999
+BHS,The Bahamas,0.0
+SRB,Republic of Serbia,0.0
+TZA,United Republic of Tanzania,0.0
+ATA,Antarctica,0.0
+COD,Democratic Republic of the Congo,0.0
+TWN,Taiwan,0.0
+CIV,Ivory Coast,0.0
+SOL,Somaliland,0.0
+KOS,Kosovo,0.0
+ALB,Albania,0.0
+CYN,Northern Cyprus,0.0
+COG,Republic of the Congo,0.0
+US1,United States of America,0.0
+SWZ,eSwatini,0.0

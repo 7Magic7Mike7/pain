@@ -1,0 +1,172 @@
+sov_a3,Country,value
+DZA,Algeria,0.0159999999999999
+ARG,Argentina,0.028
+BGD,Bangladesh,0.054
+BEL,Belgium,0.004
+BRA,Brazil,0.2
+BGR,Bulgaria,0.012
+CMR,Cameroon,0.032
+CAN,Canada,0.02341342466864
+CHL,Chile,0.048
+CH1,China,0.056
+COL,Colombia,0.052
+CRI,Costa Rica,0.0327086252581437
+HRV,Croatia,0.0219999999999999
+DJI,Djibouti,0.0379999999999999
+ECU,Ecuador,0.0699999999999999
+SLV,El Salvador,0.0379999999999999
+GNQ,Equatorial Guinea,0.036
+GAB,Gabon,0.01
+GEO,Georgia,0.0139999999999999
+DEU,Germany,0.006
+GTM,Guatemala,0.2
+GUY,Guyana,0.026
+HND,Honduras,0.052
+IND,India,0.0659999999999999
+IDN,Indonesia,0.05
+IRQ,Iraq,0.0419999999999999
+LVA,Latvia,0.002
+LBR,Liberia,0.0179999999999999
+MRT,Mauritania,0.006
+MEX,Mexico,0.0639999999999999
+MAR,Morocco,0.024
+MOZ,Mozambique,0.0717817677649578
+MMR,Myanmar,0.0419999999999999
+NZ1,New Zealand,0.072
+NGA,Nigeria,0.0303015055190898
+PAN,Panama,0.056
+PNG,Papua New Guinea,0.036
+PER,Peru,0.052
+POL,Poland,0.004
+ROU,Romania,0.0219999999999999
+SEN,Senegal,0.0139999999999999
+SVN,Slovenia,0.0378202326230674
+SOM,Somalia,0.1328941600429879
+ZAF,South Africa,0.0459999999999999
+ESP,Spain,0.028
+SDN,Sudan,0.0464507421076565
+SUR,Suriname,0.002
+SWE,Sweden,0.002
+THA,Thailand,0.1066730690208793
+TGO,Togo,0.026
+TUN,Tunisia,0.01
+UKR,Ukraine,0.012
+ZWE,Zimbabwe,0.0419999999999999
+CU1,Cuba,0.0
+SRB,Republic of Serbia,0.0
+TKM,Turkmenistan,0.0
+ITA,Italy,0.0
+GIN,Guinea,0.0
+AU1,Australia,0.0
+ARE,United Arab Emirates,0.0
+PRK,North Korea,0.0
+ERI,Eritrea,0.0
+SYR,Syria,0.0
+MNG,Mongolia,0.0
+AUT,Austria,0.0
+CYN,Northern Cyprus,0.0
+ISL,Iceland,0.0
+KOS,Kosovo,0.0
+BLZ,Belize,0.0
+YEM,Yemen,0.0
+CAF,Central African Republic,0.0
+IRN,Iran,0.0
+HUN,Hungary,0.0
+MDG,Madagascar,0.0
+OMN,Oman,0.0
+ATA,Antarctica,0.0
+PRT,Portugal,0.0
+KEN,Kenya,0.0
+HTI,Haiti,0.0
+COG,Republic of the Congo,0.0
+PHL,Philippines,0.0
+GB1,United Kingdom,0.0
+GMB,Gambia,0.0
+BTN,Bhutan,0.0
+TCD,Chad,0.0
+VNM,Vietnam,0.0
+GNB,Guinea-Bissau,0.0
+LUX,Luxembourg,0.0
+BOL,Bolivia,0.0
+JAM,Jamaica,0.0
+PRY,Paraguay,0.0
+DN1,Denmark,0.0
+BRN,Brunei,0.0
+ZMB,Zambia,0.0
+AFG,Afghanistan,0.0
+RWA,Rwanda,0.0
+AGO,Angola,0.0
+BDI,Burundi,0.0
+ALB,Albania,0.0
+BLR,Belarus,0.0
+EGY,Egypt,0.0
+PAK,Pakistan,0.0
+SAH,Western Sahara,0.0
+VEN,Venezuela,0.0
+AZE,Azerbaijan,0.0
+QAT,Qatar,0.0
+LSO,Lesotho,0.0
+MYS,Malaysia,0.0
+GHA,Ghana,0.0
+KHM,Cambodia,0.0
+UGA,Uganda,0.0
+BFA,Burkina Faso,0.0
+JPN,Japan,0.0
+COD,Democratic Republic of the Congo,0.0
+MNE,Montenegro,0.0
+SLB,Solomon Islands,0.0
+LAO,Laos,0.0
+GRC,Greece,0.0
+RUS,Russia,0.0
+BIH,Bosnia and Herzegovina,0.0
+BHS,The Bahamas,0.0
+SWZ,eSwatini,0.0
+NPL,Nepal,0.0
+IS1,Israel,0.0
+TWN,Taiwan,0.0
+FJI,Fiji,0.0
+ETH,Ethiopia,0.0
+URY,Uruguay,0.0
+TZA,United Republic of Tanzania,0.0
+CHE,Switzerland,0.0
+IRL,Ireland,0.0
+NIC,Nicaragua,0.0
+NER,Niger,0.0
+NL1,Netherlands,0.0
+BEN,Benin,0.0
+SOL,Somaliland,0.0
+LTU,Lithuania,0.0
+CIV,Ivory Coast,0.0
+SVK,Slovakia,0.0
+SLE,Sierra Leone,0.0
+TUR,Turkey,0.0
+DOM,Dominican Republic,0.0
+VUT,Vanuatu,0.0
+MDA,Moldova,0.0
+SAU,Saudi Arabia,0.0
+UZB,Uzbekistan,0.0
+KOR,South Korea,0.0
+LKA,Sri Lanka,0.0
+CYP,Cyprus,0.0
+EST,Estonia,0.0
+KGZ,Kyrgyzstan,0.0
+NOR,Norway,0.0
+US1,United States of America,0.0
+FR1,France,0.0
+LBN,Lebanon,0.0
+TTO,Trinidad and Tobago,0.0
+NAM,Namibia,0.0
+KWT,Kuwait,0.0
+CZE,Czechia,0.0
+MLI,Mali,0.0
+JOR,Jordan,0.0
+MWI,Malawi,0.0
+TJK,Tajikistan,0.0
+MKD,North Macedonia,0.0
+KA1,Kazakhstan,0.0
+FI1,Finland,0.0
+BWA,Botswana,0.0
+ARM,Armenia,0.0
+LBY,Libya,0.0
+TLS,East Timor,0.0
+SDS,South Sudan,0.0
