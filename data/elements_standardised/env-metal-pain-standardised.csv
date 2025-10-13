@@ -1,0 +1,162 @@
+,Country,value,StandardisedCountry,iso2
+1,Albania,69833,Albania,AL
+2,Algeria,764578,Algeria,DZ
+3,Angola,236946,Angola,AO
+4,Antigua and Barbuda,627,Antigua and Barbuda,AG
+5,Argentina,465808,Argentina,AR
+7,Australia,5266,Australia,AU
+8,Bahamas,2212,The Bahamas,BS
+9,Bahrain,1043,Bahrain,BH
+10,Bangladesh,1021990,Bangladesh,BD
+11,Barbados,872,Barbados,BB
+12,Belgium,2284,Belgium,BE
+13,Belize,6021,Belize,BZ
+14,Benin,133335,Benin,BJ
+15,Bosnia and Herzegovina,55551,Bosnia and Herzegovina,BA
+16,Brazil,3296700,Brazil,BR
+17,Brunei,692,Brunei,BN
+18,Bulgaria,3117,Bulgaria,BG
+19,Burkina Faso,317298,Burkina Faso,BF
+20,Cambodia,247495,Cambodia,KH
+21,Cameroon,578798,Cameroon,CM
+22,Canada,23587,Canada,CA
+23,Cape Verde,3568,Cape Verde,CV
+24,Chile,30767,Chile,CL
+25,China,12272200,China,CN
+26,Colombia,85454,Colombia,CO
+27,Comoros,59158,Comoros,KM
+29,Costa Rica,5751,Costa Rica,CR
+30,Cote d'Ivoire,291614,Ivory Coast,CI
+31,Croatia,17544,Croatia,HR
+32,Cyprus,837,Cyprus,CY
+33,Democratic Republic of Congo,1369730,Democratic Republic of the Congo,CD
+34,Denmark,390,Denmark,DK
+35,Djibouti,10289,Djibouti,DJ
+36,Dominica,1082,Dominica,DM
+37,Dominican Republic,194018,Dominican Republic,DO
+39,East Timor,17244,East Timor,TL
+40,Ecuador,108797,Ecuador,EC
+41,Egypt,1435510,Egypt,EG
+42,El Salvador,21693,El Salvador,SV
+43,Equatorial Guinea,9403,Equatorial Guinea,GQ
+44,Eritrea,84088,Eritrea,ER
+45,Estonia,600,Estonia,EE
+47,Fiji,3858,Fiji,FJ
+48,Finland,2621,Finland,FI
+49,France,27780,France,FR
+50,French Guiana,126,French Guiana,GF
+51,Gabon,5991,Gabon,GA
+52,Gambia,35095,Gambia,GM
+53,Georgia,307,Georgia,GE
+54,Germany,50676,Germany,DE
+55,Ghana,520002,Ghana,GH
+56,Greece,4506,Greece,GR
+57,Grenada,1357,Grenada,GD
+58,Guadeloupe,162,Guadeloupe,GP
+59,Guatemala,311003,Guatemala,GT
+60,Guinea,147997,Guinea,GN
+61,Guinea-Bissau,20465,Guinea-Bissau,GW
+62,Guyana,27565,Guyana,GY
+63,Haiti,237968,Haiti,HT
+64,Honduras,145995,Honduras,HN
+65,Hong Kong,5781,Hong Kong,HK
+66,Iceland,151,Iceland,IS
+67,India,12994100,India,IN
+68,Indonesia,824234,Indonesia,ID
+69,Iran,495965,Iran,IR
+70,Iraq,491771,Iraq,IQ
+71,Ireland,2675,Ireland,IE
+72,Israel,6060,Israel,IL
+73,Italy,38803,Italy,IT
+74,Jamaica,49673,Jamaica,JM
+75,Japan,35684,Japan,JP
+76,Jordan,124425,Jordan,JO
+77,Kazakhstan,54242,Kazakhstan,KZ
+78,Kenya,289917,Kenya,KE
+79,Kiribati,74,Kiribati,KI
+80,Kuwait,2640,Kuwait,KW
+81,Latvia,955,Latvia,LV
+82,Lebanon,46622,Lebanon,LB
+83,Lesotho,30391,Lesotho,LS
+84,Liberia,39930,Liberia,LR
+85,Libya,188535,Libya,LY
+86,Lithuania,1037,Lithuania,LT
+87,Macau,14749,Macao,MO
+88,Madagascar,25250,Madagascar,MG
+89,Malaysia,814454,Malaysia,MY
+90,Maldives,60,Maldives,MV
+91,Malta,259,Malta,MT
+92,Marshall Islands,16,Marshall Islands,MH
+93,Martinique,139,Martinique,MQ
+94,Mauritania,20796,Mauritania,MR
+95,Mauritius,299,Mauritius,MU
+96,Mexico,430614,Mexico,MX
+97,Micronesia,447,Micronesia (country),FM
+98,Monaco,5,Monaco,MC
+99,Montenegro,16,Montenegro,ME
+100,Morocco,295488,Morocco,MA
+101,Mozambique,434432,Mozambique,MZ
+102,Myanmar,434432,Myanmar,MM
+103,Namibia,20892,Namibia,NA
+104,Netherlands,15233,Netherlands,NL
+105,New Zealand,1714,New Zealand,NZ
+106,Nicaragua,110862,Nicaragua,NI
+107,Nigeria,1948950,Nigeria,NG
+109,North Korea,322,North Korea,KP
+110,Norway,1494,Norway,NO
+112,Oman,1251,Oman,OM
+113,Pakistan,1346460,Pakistan,PK
+114,Palau,116,Palau,PW
+115,Palestine,2129,Palestine,PS
+116,Panama,36339,Panama,PA
+117,Papua New Guinea,119538,Papua New Guinea,PG
+118,Peru,140313,Peru,PE
+119,Philippines,4025300,Philippines,PH
+120,Poland,14124,Poland,PL
+121,Portugal,3818,Portugal,PT
+122,Puerto Rico,1293,Puerto Rico,PR
+123,Qatar,1532,Qatar,QA
+124,Reunion,233,Reunion,RE
+125,Romania,52161,Romania,RO
+126,Russia,363389,Russia,RU
+127,Saint Kitts and Nevis,97,Saint Kitts and Nevis,KN
+128,Saint Lucia,4276,Saint Lucia,LC
+130,Saint Vincent and the Grenadines,1235,Saint Vincent and the Grenadines,VC
+131,Samoa,1738,Samoa,WS
+132,Sao Tome and Principe,2069,Sao Tome and Principe,ST
+133,Saudi Arabia,7176,Saudi Arabia,SA
+134,Senegal,65660,Senegal,SN
+135,Seychelles,33,Seychelles,SC
+136,Sierra Leone,91239,Sierra Leone,SL
+137,Singapore,2468,Singapore,SG
+138,Sint Maarten,3,Sint Maarten (Dutch part),SX
+139,Slovakia,1719,Slovakia,SK
+140,Slovenia,844,Slovenia,SI
+141,Solomon Islands,3520,Solomon Islands,SB
+142,Somalia,42,Somalia,SO
+143,South Africa,708467,South Africa,ZA
+145,South Korea,12156,South Korea,KR
+146,Spain,20350,Spain,ES
+147,Sri Lanka,155466,Sri Lanka,LK
+148,Sudan,781625,Sudan,SD
+149,Suriname,22933,Suriname,SR
+150,Sweden,4255,Sweden,SE
+151,Syria,502,Syria,SY
+152,Taiwan,7502,Taiwan,TW
+153,Tanzania,1716400,United Republic of Tanzania,TZ
+154,Thailand,1361690,Thailand,TH
+155,Togo,121783,Togo,TG
+156,Tonga,666,Tonga,TO
+157,Trinidad and Tobago,73139,Trinidad and Tobago,TT
+158,Tunisia,289538,Tunisia,TN
+159,Turkey,1656110,Turkey,TR
+160,Ukraine,393777,Ukraine,UA
+161,United Arab Emirates,5135,United Arab Emirates,AE
+162,United Kingdom,29914,United Kingdom,GB
+163,United States,267469,United States of America,US
+164,Uruguay,92620,Uruguay,UY
+165,Venezuela,671431,Venezuela,VE
+166,Vietnam,1112790,Vietnam,VN
+167,Western Sahara,4114,Western Sahara,EH
+169,Yemen,291737,Yemen,YE
+170,Zimbabwe,524865,Zimbabwe,ZW

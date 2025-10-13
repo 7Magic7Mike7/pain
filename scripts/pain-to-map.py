@@ -115,7 +115,7 @@ if __name__ == "__main__":
         "physical": os.path.join(BASE_PATH, "out", "sov_data", "physical-sov.csv"),
         "env": os.path.join(BASE_PATH, "out", "sov_data", "env-sov.csv"),
 
-        "fire": os.path.join(BASE_PATH, "out", "sov_data", "env-fire-sov.csv"),
+        "fire": os.path.join(BASE_PATH, "out", "sov_data", "std-env-fire-sov.csv"),
         "water": os.path.join(BASE_PATH, "out", "sov_data", "env-water-sov.csv"),
         "earth": os.path.join(BASE_PATH, "out", "sov_data", "env-earth-sov.csv"),
         "wood": os.path.join(BASE_PATH, "out", "sov_data", "env-wood-sov.csv"),

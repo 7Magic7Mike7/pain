@@ -1,0 +1,127 @@
+,Country,value,StandardisedCountry,iso2
+0,Africa,4414000.0,,
+1,Algeria,5400.0,Algeria,DZ
+2,Argentina,134800.0,Argentina,AR
+3,Aruba,0.0,Aruba,AW
+4,Asia,2235000.0,,
+5,Austria,5810.0,Austria,AT
+6,Azerbaijan,86360.0,Azerbaijan,AZ
+7,Bahrain,0.0,Bahrain,BH
+8,Bangladesh,0.0,Bangladesh,BD
+9,Belarus,3500.0,Belarus,BY
+10,Belgium,1500.0,Belgium,BE
+11,Belize,11160.0,Belize,BZ
+12,Bhutan,430.0,Bhutan,BT
+13,Bolivia,242540.0,Bolivia,BO
+14,Brazil,1695700.0,Brazil,BR
+15,Bulgaria,0.0,Bulgaria,BG
+16,Burundi,0.0,Burundi,BI
+17,Cameroon,58000.0,Cameroon,CM
+18,Canada,37520.0,Canada,CA
+19,Cape Verde,820.0,Cape Verde,CV
+20,Cayman Islands,0.0,Cayman Islands,KY
+21,Central African Republic,30000.0,Central African Republic,CF
+22,Chile,9400.0,Chile,CL
+23,China,133200.0,China,CN
+24,Colombia,199230.0,Colombia,CO
+25,Congo,13800.0,,
+26,Costa Rica,0.0,Costa Rica,CR
+27,Croatia,50.0,Croatia,HR
+28,Cuba,0.0,Cuba,CU
+29,Denmark,620.0,Denmark,DK
+30,Djibouti,160.0,Djibouti,DJ
+31,Ecuador,87220.0,Ecuador,EC
+32,El Salvador,4500.0,El Salvador,SV
+33,Equatorial Guinea,8360.0,Equatorial Guinea,GQ
+34,Estonia,5010.0,Estonia,EE
+35,Ethiopia,92000.0,Ethiopia,ET
+36,Europe,69000.0,,
+37,Falkland Islands,0.0,Falkland Islands,FK
+38,Faroe Islands,0.0,Faroe Islands,FO
+39,French Guyana,5780.0,French Guiana,GF
+40,Gabon,19250.0,Gabon,GA
+41,Georgia,0.0,Georgia,GE
+42,Germany,7000.0,Germany,DE
+43,Gibraltar,0.0,Gibraltar,GI
+44,Greenland,0.0,Greenland,GL
+45,Guadeloupe,250.0,Guadeloupe,GP
+46,Guatemala,11600.0,Guatemala,GT
+47,Guyana,9200.0,Guyana,GY
+48,Honduras,23190.0,Honduras,HN
+49,Hungary,3140.0,Hungary,HU
+50,Iceland,0.0,Iceland,IS
+51,India,668400.0,India,IN
+52,Indonesia,650000.0,Indonesia,ID
+53,Iraq,0.0,Iraq,IQ
+54,Ireland,620.0,Ireland,IE
+55,Isle of Man,0.0,Isle of Man,IM
+56,Jamaica,540.0,Jamaica,JM
+57,Kuwait,0.0,Kuwait,KW
+58,Kyrgyzstan,0.0,Kyrgyzstan,KG
+59,Latvia,360.0,Latvia,LV
+60,Liberia,30260.0,Liberia,LR
+61,Liechtenstein,210.0,Liechtenstein,LI
+62,Lithuania,140.0,Lithuania,LT
+63,Malawi,42000.0,Malawi,MW
+64,Maldives,0.0,Maldives,MV
+65,Mali,0.0,Mali,ML
+66,Martinique,160.0,Martinique,MQ
+67,Mauritania,45380.0,Mauritania,MR
+68,Mauritius,120.0,Mauritius,MU
+69,Mayotte,60.0,Mayotte,YT
+70,Mexico,165820.0,Mexico,MX
+71,Moldova,340.0,Moldova,MD
+72,Monaco,0.0,Monaco,MC
+73,Mongolia,1520.0,Mongolia,MN
+74,Montenegro,12000.0,Montenegro,ME
+75,Morocco,0.0,Morocco,MA
+76,Mozambique,267030.0,Mozambique,MZ
+77,Myanmar,293920.0,Myanmar,MM
+78,Nauru,0.0,Nauru,NR
+79,Nepal,0.0,Nepal,NP
+80,Netherlands,2190.0,Netherlands,NL
+81,New Zealand,6580.0,New Zealand,NZ
+82,Nicaragua,105030.0,Nicaragua,NI
+83,Niger,14920.0,Niger,NE
+84,Nigeria,163310.0,Nigeria,NG
+85,North Korea,23190.0,North Korea,KP
+86,Norway,5820.0,Norway,NO
+87,Oceania,42000.0,,
+88,Panama,12490.0,Panama,PA
+89,Papua New Guinea,33530.0,Papua New Guinea,PG
+90,Paraguay,279340.0,Paraguay,PY
+91,Peru,179090.0,Peru,PE
+92,Poland,770.0,Poland,PL
+93,Qatar,0.0,Qatar,QA
+94,Romania,20.0,Romania,RO
+95,Russia,0.0,Russia,RU
+96,San Marino,0.0,San Marino,SM
+97,Sao Tome and Principe,620.0,Sao Tome and Principe,ST
+98,Senegal,51000.0,Senegal,SN
+99,Serbia,40.0,Republic of Serbia,RS
+100,Singapore,240.0,Singapore,SG
+101,Slovenia,2030.0,Slovenia,SI
+102,Somalia,76750.0,Somalia,SO
+103,South Africa,199000.0,South Africa,ZA
+104,South America,2953000.0,,
+105,South Korea,10000.0,South Korea,KR
+106,Spain,3740.0,Spain,ES
+107,Sudan,264000.0,Sudan,SD
+108,Suriname,11650.0,Suriname,SR
+109,Sweden,13050.0,Sweden,SE
+110,Switzerland,1340.0,Switzerland,CH
+111,Tanzania,474000.0,United Republic of Tanzania,TZ
+112,Thailand,37600.0,Thailand,TH
+113,Togo,4960.0,Togo,TG
+114,Tokelau,0.0,Tokelau,TK
+115,Tunisia,570.0,Tunisia,TN
+116,Turkey,1170.0,Turkey,TR
+117,Uganda,51090.0,Uganda,UG
+118,Ukraine,100.0,Ukraine,UA
+119,Uzbekistan,14150.0,Uzbekistan,UZ
+120,Vatican,0.0,Vatican,VA
+121,Venezuela,108290.0,Venezuela,VE
+122,Vietnam,1590.0,Vietnam,VN
+123,World,10150000.0,,
+124,Zambia,189710.0,Zambia,ZM
+125,Zimbabwe,46070.0,Zimbabwe,ZW

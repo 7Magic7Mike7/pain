@@ -1,0 +1,245 @@
+,Country,value,StandardisedCountry,iso2
+0,Afghanistan,0.92,Afghanistan,AF
+1,Aland Islands,1.0,Aland Islands,AX
+2,Algeria,0.92,Algeria,DZ
+3,American Samoa,0.87,American Samoa,AS
+4,Andorra,0.96,Andorra,AD
+5,Angola,0.93,Angola,AO
+6,Anguilla,0.89,Anguilla,AI
+7,Antigua and Barbuda,0.89,Antigua and Barbuda,AG
+8,Argentina,0.86,Argentina,AR
+9,Armenia,0.84,Armenia,AM
+10,Aruba,0.98,Aruba,AW
+11,Australia,0.81,Australia,AU
+13,Austria,0.87,Austria,AT
+14,Azerbaijan,0.94,Azerbaijan,AZ
+15,Bahamas,0.7,The Bahamas,BS
+16,Bahrain,0.73,Bahrain,BH
+17,Bangladesh,0.73,Bangladesh,BD
+18,Barbados,0.86,Barbados,BB
+19,Belarus,0.98,Belarus,BY
+20,Belgium,0.98,Belgium,BE
+21,Belize,0.78,Belize,BZ
+22,Benin,0.91,Benin,BJ
+23,Bermuda,0.6,Bermuda,BM
+24,Bhutan,0.82,Bhutan,BT
+25,Bolivia,0.85,Bolivia,BO
+26,Bonaire Sint Eustatius and Saba,0.88,Bonaire Sint Eustatius and Saba,BQ
+27,Bosnia and Herzegovina,0.89,Bosnia and Herzegovina,BA
+28,Botswana,0.98,Botswana,BW
+29,Bouvet Island,0.94,Bouvet Island,BV
+30,Brazil,0.88,Brazil,BR
+31,British Indian Ocean Territory,0.8,British Indian Ocean Territory,IO
+32,British Virgin Islands,0.77,British Virgin Islands,VG
+33,Brunei,0.85,Brunei,BN
+34,Bulgaria,0.94,Bulgaria,BG
+35,Burkina Faso,0.99,Burkina Faso,BF
+36,Burundi,0.9,Burundi,BI
+37,Cambodia,0.79,Cambodia,KH
+38,Cameroon,0.84,Cameroon,CM
+39,Canada,0.97,Canada,CA
+40,Cape Verde,0.91,Cape Verde,CV
+41,Cayman Islands,0.82,Cayman Islands,KY
+42,Central African Republic,0.94,Central African Republic,CF
+44,Chad,0.91,Chad,TD
+45,Chile,0.76,Chile,CL
+46,China,0.72,China,CN
+47,Christmas Island,0.45,Christmas Island,CX
+48,Cocos Islands,0.76,Cocos Islands,CC
+49,Colombia,0.74,Colombia,CO
+50,Comoros,0.72,Comoros,KM
+52,Cook Islands,0.79,Cook Islands,CK
+53,Costa Rica,0.84,Costa Rica,CR
+54,Cote d'Ivoire,0.91,Ivory Coast,CI
+55,Croatia,0.89,Croatia,HR
+56,Cuba,0.68,Cuba,CU
+57,Curacao,0.89,Curacao,CW
+58,Cyprus,0.92,Cyprus,CY
+59,Czechia,0.97,Czechia,CZ
+60,Democratic Republic of Congo,0.88,Democratic Republic of the Congo,CD
+61,Denmark,0.98,Denmark,DK
+62,Djibouti,0.81,Djibouti,DJ
+63,Dominica,0.69,Dominica,DM
+64,Dominican Republic,0.73,Dominican Republic,DO
+65,East Timor,0.84,East Timor,TL
+67,Ecuador,0.65,Ecuador,EC
+68,Egypt,0.9,Egypt,EG
+69,El Salvador,0.81,El Salvador,SV
+70,Equatorial Guinea,0.82,Equatorial Guinea,GQ
+71,Eritrea,0.88,Eritrea,ER
+72,Estonia,0.99,Estonia,EE
+73,Eswatini,0.81,eSwatini,SZ
+74,Ethiopia,0.85,Ethiopia,ET
+77,Falkland Islands,0.74,Falkland Islands,FK
+78,Faroe Islands,0.88,Faroe Islands,FO
+79,Fiji,0.69,Fiji,FJ
+80,Finland,0.99,Finland,FI
+81,France,0.83,France,FR
+82,French Guiana,0.94,French Guiana,GF
+83,French Polynesia,0.7,French Polynesia,PF
+84,French Southern Territories,0.83,French Southern Territories,TF
+85,Gabon,0.95,Gabon,GA
+86,Gambia,0.96,Gambia,GM
+87,Georgia,0.93,Georgia,GE
+88,Germany,0.97,Germany,DE
+89,Ghana,0.83,Ghana,GH
+90,Gibraltar,0.93,Gibraltar,GI
+91,Greece,0.87,Greece,GR
+92,Greenland,0.91,Greenland,GL
+93,Grenada,0.62,Grenada,GD
+94,Guadeloupe,0.59,Guadeloupe,GP
+95,Guam,0.35,Guam,GU
+96,Guatemala,0.72,Guatemala,GT
+97,Guernsey,0.95,Guernsey,GG
+98,Guinea,0.89,Guinea,GN
+99,Guinea-Bissau,0.91,Guinea-Bissau,GW
+100,Guyana,0.87,Guyana,GY
+101,Haiti,0.72,Haiti,HT
+102,Heard Island and McDonald Islands,0.93,Heard Island and McDonald Islands,HM
+103,Honduras,0.74,Honduras,HN
+104,Hong Kong,0.89,Hong Kong,HK
+105,Hungary,0.91,Hungary,HU
+106,Iceland,0.88,Iceland,IS
+107,India,0.67,India,IN
+108,Indonesia,0.75,Indonesia,ID
+109,Iran,0.86,Iran,IR
+110,Iraq,0.79,Iraq,IQ
+111,Ireland,0.88,Ireland,IE
+112,Isle of Man,0.96,Isle of Man,IM
+113,Israel,0.72,Israel,IL
+114,Italy,0.87,Italy,IT
+115,Jamaica,0.64,Jamaica,JM
+116,Japan,0.75,Japan,JP
+117,Jersey,0.96,Jersey,JE
+118,Jordan,0.96,Jordan,JO
+119,Kazakhstan,0.88,Kazakhstan,KZ
+120,Kenya,0.77,Kenya,KE
+121,Kiribati,0.75,Kiribati,KI
+122,Kuwait,0.86,Kuwait,KW
+123,Kyrgyzstan,0.89,Kyrgyzstan,KG
+124,Laos,0.83,Laos,LA
+126,Latvia,0.99,Latvia,LV
+128,Lebanon,0.96,Lebanon,LB
+129,Lesotho,0.94,Lesotho,LS
+130,Liberia,0.91,Liberia,LR
+131,Libya,0.98,Libya,LY
+132,Liechtenstein,0.98,Liechtenstein,LI
+133,Lithuania,0.99,Lithuania,LT
+134,Luxembourg,0.98,Luxembourg,LU
+135,Macao,0.82,Macao,MO
+136,Madagascar,0.74,Madagascar,MG
+137,Malawi,0.81,Malawi,MW
+138,Malaysia,0.69,Malaysia,MY
+139,Maldives,0.84,Maldives,MV
+140,Mali,0.98,Mali,ML
+141,Malta,0.92,Malta,MT
+142,Marshall Islands,0.81,Marshall Islands,MH
+143,Martinique,0.69,Martinique,MQ
+144,Mauritania,0.97,Mauritania,MR
+145,Mauritius,0.38,Mauritius,MU
+146,Mayotte,0.83,Mayotte,YT
+147,Mexico,0.68,Mexico,MX
+148,Micronesia (country),0.65,Micronesia (country),FM
+149,Moldova,0.97,Moldova,MD
+150,Monaco,0.88,Monaco,MC
+151,Mongolia,0.95,Mongolia,MN
+152,Montenegro,0.84,Montenegro,ME
+153,Montserrat,0.6,Montserrat,MS
+154,Morocco,0.88,Morocco,MA
+155,Mozambique,0.78,Mozambique,MZ
+156,Myanmar,0.79,Myanmar,MM
+157,Namibia,0.97,Namibia,NA
+158,Nauru,0.8,Nauru,NR
+159,Nepal,0.85,Nepal,NP
+160,Netherlands,0.91,Netherlands,NL
+161,New Caledonia,0.63,New Caledonia,NC
+162,New Zealand,0.64,New Zealand,NZ
+163,Nicaragua,0.82,Nicaragua,NI
+164,Niger,0.93,Niger,NE
+165,Nigeria,0.85,Nigeria,NG
+166,Niue,0.8,Niue,NU
+167,Norfolk Island,0.68,Norfolk Island,NF
+168,North Korea,0.9,North Korea,KP
+169,North Macedonia,0.92,North Macedonia,MK
+173,Northern Mariana Islands,0.57,Northern Mariana Islands,MP
+174,Norway,0.95,Norway,NO
+176,Oman,0.88,Oman,OM
+177,Pakistan,0.82,Pakistan,PK
+178,Palau,0.65,Palau,PW
+179,Palestine,0.9,Palestine,PS
+180,Panama,0.72,Panama,PA
+181,Papua New Guinea,0.82,Papua New Guinea,PG
+182,Paraguay,0.95,Paraguay,PY
+183,Peru,0.74,Peru,PE
+184,Philippines,0.67,Philippines,PH
+185,Pitcairn,0.7,Pitcairn,PN
+186,Poland,0.98,Poland,PL
+187,Portugal,0.9,Portugal,PT
+188,Puerto Rico,0.68,Puerto Rico,PR
+189,Qatar,0.81,Qatar,QA
+190,Reunion,0.55,Reunion,RE
+191,Romania,0.89,Romania,RO
+192,Russia,0.95,Russia,RU
+193,Rwanda,0.89,Rwanda,RW
+194,Saint Barthlemy,0.98,Saint Barthlemy,BL
+195,Saint Helena,0.64,Saint Helena,SH
+196,Saint Kitts and Nevis,0.45,Saint Kitts and Nevis,KN
+197,Saint Lucia,0.78,Saint Lucia,LC
+198,Saint Martin (French part),0.92,Saint Martin (French part),MF
+199,Saint Pierre and Miquelon,0.88,Saint Pierre and Miquelon,PM
+200,Saint Vincent and the Grenadines,0.74,Saint Vincent and the Grenadines,VC
+201,Samoa,0.76,Samoa,WS
+202,San Marino,0.84,San Marino,SM
+203,Sao Tome and Principe,0.79,Sao Tome and Principe,ST
+204,Saudi Arabia,0.89,Saudi Arabia,SA
+205,Senegal,0.93,Senegal,SN
+206,Serbia,0.92,Republic of Serbia,RS
+207,Seychelles,0.67,Seychelles,SC
+208,Sierra Leone,0.94,Sierra Leone,SL
+209,Singapore,0.84,Singapore,SG
+210,Sint Maarten (Dutch part),0.99,Sint Maarten (Dutch part),SX
+211,Slovakia,0.97,Slovakia,SK
+212,Slovenia,0.91,Slovenia,SI
+214,Solomon Islands,0.75,Solomon Islands,SB
+215,Somalia,0.9,Somalia,SO
+216,South Africa,0.77,South Africa,ZA
+217,South Georgia and the South Sandwich Islands,0.94,South Georgia and the South Sandwich Islands,GS
+218,South Korea,0.68,South Korea,KR
+219,South Sudan,0.93,South Sudan,SS
+220,Spain,0.86,Spain,ES
+221,Sri Lanka,0.55,Sri Lanka,LK
+223,Sudan,0.91,Sudan,SD
+224,Suriname,0.99,Suriname,SR
+225,Svalbard and Jan Mayen,0.9,Svalbard and Jan Mayen,SJ
+226,Sweden,0.99,Sweden,SE
+227,Switzerland,0.96,Switzerland,CH
+228,Syria,0.95,Syria,SY
+229,Tajikistan,0.99,Tajikistan,TJ
+230,Tanzania,0.68,United Republic of Tanzania,TZ
+231,Thailand,0.76,Thailand,TH
+232,Togo,0.87,Togo,TG
+233,Tokelau,0.84,Tokelau,TK
+234,Tonga,0.72,Tonga,TO
+235,Trinidad and Tobago,0.87,Trinidad and Tobago,TT
+236,Tunisia,0.95,Tunisia,TN
+237,Turkey,0.9,Turkey,TR
+238,Turkmenistan,0.98,Turkmenistan,TM
+239,Turks and Caicos Islands,0.85,Turks and Caicos Islands,TC
+240,Tuvalu,0.82,Tuvalu,TV
+241,Uganda,0.74,Uganda,UG
+242,Ukraine,0.94,Ukraine,UA
+243,United Arab Emirates,0.84,United Arab Emirates,AE
+244,United Kingdom,0.97,United Kingdom,GB
+245,United States,0.83,United States of America,US
+246,United States Virgin Islands,0.82,United States Virgin Islands,VI
+247,Uruguay,0.91,Uruguay,UY
+248,Uzbekistan,0.97,Uzbekistan,UZ
+249,Vanuatu,0.67,Vanuatu,VU
+250,Vatican,0.82,Vatican,VA
+251,Venezuela,0.81,Venezuela,VE
+252,Vietnam,0.7,Vietnam,VN
+253,Wallis and Futuna,0.83,Wallis and Futuna,WF
+254,Western Sahara,0.97,Western Sahara,EH
+256,Yemen,0.87,Yemen,YE
+257,Zambia,0.88,Zambia,ZM
+258,Zimbabwe,0.79,Zimbabwe,ZW

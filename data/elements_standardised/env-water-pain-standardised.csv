@@ -1,0 +1,142 @@
+,Country,value,StandardisedCountry,iso2
+0,Afghanistan,,Afghanistan,AF
+1,Albania,84.0,Albania,AL
+2,Algeria,16688.0,Algeria,DZ
+3,Angola,191262.0,Angola,AO
+4,Argentina,680190.0,Argentina,AR
+5,Armenia,429.0,Armenia,AM
+6,Australia,,Australia,AU
+7,Austria,,Austria,AT
+8,Bangladesh,,Bangladesh,BD
+9,Belarus,420.0,Belarus,BY
+10,Belgium,104950.0,Belgium,BE
+11,Benin,149902.0,Benin,BJ
+12,Bhutan,,Bhutan,BT
+13,Bolivia (Plurinational State of),3897315.0,Bolivia,BO
+14,Bosnia and Herzegovina,274000.0,Bosnia and Herzegovina,BA
+15,Botswana,8259.0,Botswana,BW
+16,Brazil,4727251.0,Brazil,BR
+17,Bulgaria,14962.0,Bulgaria,BG
+18,Burkina Faso,138136.0,Burkina Faso,BF
+19,Burundi,335704.0,Burundi,BI
+20,Cabo Verde,144000.0,Cape Verde,CV
+21,Cambodia,180995.0,Cambodia,KH
+22,Cameroon,772765.0,Cameroon,CM
+23,Canada,31386.0,Canada,CA
+24,Central African Republic,124660.0,Central African Republic,CF
+25,Chad,3352017.0,Chad,TD
+26,Chile,60676.0,Chile,CL
+27,China,,China,CN
+28,Colombia,,Colombia,CO
+29,Congo,,,
+30,Costa Rica,1298668.0,Costa Rica,CR
+31,Côte d’Ivoire,30476.0,Ivory Coast,CI
+32,Croatia,,Croatia,HR
+33,Cuba,20800.0,Cuba,CU
+34,Cyprus,469.0,Cyprus,CY
+35,Czechia,,Czechia,CZ
+36,Democratic People's Republic of Korea,94200.0,North Korea,KP
+37,Democratic Republic of the Congo,,Democratic Republic of the Congo,CD
+38,Djibouti,110000.0,Djibouti,DJ
+39,Dominican Republic,326786.0,Dominican Republic,DO
+40,Ecuador,252581.0,Ecuador,EC
+41,Egypt,26635.0,Egypt,EG
+42,El Salvador,300.0,El Salvador,SV
+43,Equatorial Guinea,23155.0,Equatorial Guinea,GQ
+44,Ethiopia,,Ethiopia,ET
+45,France,15838.0,France,FR
+46,French Guiana,139.0,French Guiana,GF
+47,Gabon,13400.0,Gabon,GA
+48,Gambia,17201.0,Gambia,GM
+49,Georgia,362113.0,Georgia,GE
+50,Germany,4407.0,Germany,DE
+51,Ghana,,Ghana,GH
+52,Greece,,Greece,GR
+53,Guatemala,7940829.0,Guatemala,GT
+54,Guinea,371813.0,Guinea,GN
+55,Guyana,35000.0,Guyana,GY
+56,Haiti,,Haiti,HT
+57,Honduras,96157.0,Honduras,HN
+58,India,,India,IN
+59,Indonesia,,Indonesia,ID
+60,Iran (Islamic Republic of),,Iran,IR
+61,Iraq,60220.0,Iraq,IQ
+62,Israel,,Israel,IL
+63,Italy,,Italy,IT
+64,Japan,297861.0,Japan,JP
+65,Kazakhstan,153000.0,Kazakhstan,KZ
+66,Kenya,,Kenya,KE
+67,Kyrgyzstan,107401.0,Kyrgyzstan,KG
+68,Lao People's Democratic Republic,510534.0,Laos,LA
+69,Latvia,200.0,Latvia,LV
+70,Liberia,51000.0,Liberia,LR
+71,Libya,3335.0,Libya,LY
+72,Luxembourg,,Luxembourg,LU
+73,Madagascar,,Madagascar,MG
+74,Malawi,340537.0,Malawi,MW
+75,Malaysia,378642.0,Malaysia,MY
+76,Mali,459166.0,Mali,ML
+77,Mauritania,56108.0,Mauritania,MR
+78,Mexico,,Mexico,MX
+79,Mongolia,327698.0,Mongolia,MN
+80,Morocco,1553.0,Morocco,MA
+81,Mozambique,332474.0,Mozambique,MZ
+82,Myanmar,367707.0,Myanmar,MM
+83,Namibia,,Namibia,NA
+84,Nepal,2722047.0,Nepal,NP
+85,Netherlands (Kingdom of the),,Netherlands,NL
+86,New Zealand,9230.0,New Zealand,NZ
+87,Niger,2807264.0,Niger,NE
+88,Nigeria,,Nigeria,NG
+89,Oman,1491.0,Oman,OM
+90,Pakistan,,Pakistan,PK
+91,Panama,30490.0,Panama,PA
+92,Papua New Guinea,60900.0,Papua New Guinea,PG
+93,Paraguay,52675.0,Paraguay,PY
+94,Peru,637114.0,Peru,PE
+95,Philippines,5847143.0,Philippines,PH
+96,Poland,,Poland,PL
+97,Puerto Rico,,Puerto Rico,PR
+98,Republic of Korea,56027.0,South Korea,KR
+99,Romania,4150.0,Romania,RO
+100,Russian Federation,67788.0,Russia,RU
+101,Rwanda,,Rwanda,RW
+102,Saint Lucia,5500.0,Saint Lucia,LC
+103,Sao Tome and Principe,219668.0,Sao Tome and Principe,ST
+104,Saudi Arabia,600.0,Saudi Arabia,SA
+105,Senegal,92610.0,Senegal,SN
+106,Serbia,32164.0,Republic of Serbia,RS
+107,Sierra Leone,36578.0,Sierra Leone,SL
+108,Slovakia,,Slovakia,SK
+109,Slovenia,1501620.0,Slovenia,SI
+110,Somalia,5276449.0,Somalia,SO
+111,South Africa,,South Africa,ZA
+112,South Sudan,4277000.0,South Sudan,SS
+113,Spain,42865.0,Spain,ES
+114,Sri Lanka,1286307.0,Sri Lanka,LK
+115,Sudan,1844287.0,Sudan,SD
+116,Suriname,19100.0,Suriname,SR
+117,Sweden,13500.0,Sweden,SE
+118,Switzerland,,Switzerland,CH
+119,Syrian Arab Republic,154554.0,Syria,SY
+120,Taiwan (Province of China),5977.0,Taiwan,TW
+121,Tajikistan,,Tajikistan,TJ
+122,Thailand,4235363.0,Thailand,TH
+123,Timor-Leste,9131.0,East Timor,TL
+124,Togo,88296.0,Togo,TG
+125,Trinidad and Tobago,100000.0,Trinidad and Tobago,TT
+126,Tunisia,,Tunisia,TN
+127,Türkiye,,Turkey,TR
+128,Uganda,387752.0,Uganda,UG
+129,Ukraine,57850.0,Ukraine,UA
+130,United Arab Emirates,,United Arab Emirates,AE
+131,United Kingdom of Great Britain and Northern Ireland,480.0,United Kingdom,GB
+132,United Republic of Tanzania,,United Republic of Tanzania,TZ
+133,United States of America,,United States of America,US
+134,Uruguay,107580.0,Uruguay,UY
+135,Uzbekistan,70225.0,Uzbekistan,UZ
+136,Venezuela (Bolivarian Republic of),,Venezuela,VE
+137,Viet Nam,,Vietnam,VN
+138,Yemen,,Yemen,YE
+139,Zambia,903962.0,Zambia,ZM
+140,Zimbabwe,,Zimbabwe,ZW
