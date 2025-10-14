@@ -1,3 +1,25 @@
+
+
+
+
+
+
+
+
+________________________________________BUILT BY CHATGPT
+
+
+
+
+
+
+
+
+
+
+
+
+
 # World Map Choropleth (PNG)
 
 A tiny command-line tool to color a world map by country and export a PNG.
