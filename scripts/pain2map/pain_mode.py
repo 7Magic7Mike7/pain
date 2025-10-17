@@ -36,7 +36,7 @@ class PainMode(Enum):
     Physical = ("physical", os.path.join("out", "sov_data", "physical-sov.csv"), "RdPu", "TODO")
     Environmental = ("env", os.path.join("out", "sov_data", "env-sov.csv"), "Greys", "TODO")
 
-    Fire = ("fire", os.path.join("out", "sov_data", "std-env-fire-sov.csv"), "Greys", "TODO")
+    Fire = ("fire", os.path.join("out", "sov_data", "env-fire-sov.csv"), "Greys", "TODO")
     Water = ("water", os.path.join("out", "sov_data", "env-water-sov.csv"), "Greys", "TODO")
     Earth = ("earth", os.path.join("out", "sov_data", "env-earth-sov.csv"), "Greys", "TODO")
     Wood = ("wood", os.path.join("out", "sov_data", "env-wood-sov.csv"), "Greys", "TODO")
