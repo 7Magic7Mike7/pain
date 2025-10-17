@@ -1,7 +1,7 @@
 import sys
 import warnings
 
-from typing import Optional, List, Tuple, Dict
+from typing import Optional
 from enum import Enum
 
 import os
@@ -119,27 +119,15 @@ class PainMode(Enum):
             warnings.warn(f"Could not project to {USED_PROJECTION}, using PlateCarree. Error: {e}")
             merged = merged.to_crs(PROJECTIONS["PlateCarree"])
         
-        if False:
-            # Plot
-            #legend_kwds = {"loc": "lower left", "title": "TODO", "fmt": ".2f"}
-            #fig = plt.figure(figsize=(WIDTH_VALUE, HEIGHT_VALUE), dpi=DPI_VALUE)
-            #ax = fig.gca()
-            #fig.patch.set_alpha(0)
+        # Plot
+        fig = plt.figure(figsize=(WIDTH_VALUE, HEIGHT_VALUE), dpi=DPI_VALUE)
+        ax = plt.gca()
+        fig.patch.set_alpha(0)
+        merged.plot(column=args_value_col, ax=ax, cmap=self.cmap)
 
-            #plot_kwargs = dict(
-            #    column=column_to_plot,
-            #    #cmap=plt.get_cmap(cmap),
-            #    linewidth=EDGE_WIDTH,
-            #    edgecolor=args_edge_color,
-            #    missing_kwds={"color": args_missing_color, "edgecolor": args_edge_color, "hatch": None, "linewidth": EDGE_WIDTH},
-            #)
-            #merged.plot(ax=ax, **plot_kwargs)
-            #ax.set_axis_off()
-            #ax.set_aspect("equal")
-            #ax.set_title("TODO Title", fontsize=14, pad=12)
-            pass
-        
-        merged.plot(column=args_value_col, cmap=self.cmap, figsize=target_size)
+        ax.set_axis_off()
+        ax.set_aspect("equal")
+        ax.set_title("TODO Title", fontsize=14, pad=12)
 
         # Save
         try:
