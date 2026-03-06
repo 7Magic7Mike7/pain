@@ -36,11 +36,11 @@ class PainMode(Enum):
     Physical = ("physical", os.path.join("out", "sov_data", "physical-sov.csv"), "RdPu", "TODO")
     Environmental = ("env", os.path.join("out", "sov_data", "env-sov.csv"), "Greys", "TODO")
 
-    Fire = ("fire", os.path.join("out", "sov_data", "std-env-fire-sov.csv"), "Reds", "TODO")
-    Water = ("water", os.path.join("out", "sov_data", "env-water-sov.csv"), "Blues", "TODO")
-    Earth = ("earth", os.path.join("out", "sov_data", "env-earth-sov.csv"), "Greens", "TODO")
-    Wood = ("wood", os.path.join("out", "sov_data", "env-wood-sov.csv"), "Greens", "TODO")
-    Metal = ("metal", os.path.join("out", "sov_data", "env-metal-sov.csv"), "Reds", "TODO")
+    Fire = ("fire", os.path.join("out", "sov_data", "env-fire-sov.csv"), "Greys", "TODO")
+    Water = ("water", os.path.join("out", "sov_data", "env-water-sov.csv"), "Greys", "TODO")
+    Earth = ("earth", os.path.join("out", "sov_data", "env-earth-sov.csv"), "Greys", "TODO")
+    Wood = ("wood", os.path.join("out", "sov_data", "env-wood-sov.csv"), "Greys", "TODO")
+    Metal = ("metal", os.path.join("out", "sov_data", "env-metal-sov.csv"), "Greys", "TODO")
 
     @staticmethod
     def from_string(name: str) -> Optional["PainMode"]:
@@ -119,23 +119,11 @@ class PainMode(Enum):
             warnings.warn(f"Could not project to {USED_PROJECTION}, using PlateCarree. Error: {e}")
             merged = merged.to_crs(PROJECTIONS["PlateCarree"])
         
-        column_to_plot = args_value_col
-        legend_kwds = {"loc": "lower left", "title": "TODO", "fmt": ".2f"}
-
         # Plot
         fig = plt.figure(figsize=(WIDTH_VALUE, HEIGHT_VALUE), dpi=DPI_VALUE)
         ax = plt.gca()
         fig.patch.set_alpha(0)
-
-        plot_kwargs = dict(
-            column=column_to_plot,
-            #cmap=plt.get_cmap(cmap),
-            linewidth=EDGE_WIDTH,
-            edgecolor=args_edge_color,
-            missing_kwds={"color": args_missing_color, "edgecolor": args_edge_color, "hatch": None, "linewidth": EDGE_WIDTH},
-        )
-        #merged.plot(ax=ax, **plot_kwargs)
-        merged.plot(column="value", ax=ax, cmap=self.cmap)
+        merged.plot(column=args_value_col, ax=ax, cmap=self.cmap)
 
         ax.set_axis_off()
         ax.set_aspect("equal")
