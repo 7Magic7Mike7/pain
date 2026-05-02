@@ -11,16 +11,9 @@ import sys
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap, to_rgba
+from .util import Util
 
 # Projections map (easy names -> EPSG/PROJ strings)
-PROJECTIONS = {
-    "PlateCarree": "EPSG:4326",
-    "Mercator": "EPSG:3395",
-    "Robinson": "+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
-    "Mollweide": "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
-    "EqualEarth": "+proj=eqearth +lon_0=0 +datum=WGS84 +units=m +no_defs",
-    "WinkelTripel": "+proj=wintri +lon_0=0 +datum=WGS84 +units=m +no_defs",
-}
 USED_PROJECTION = "PlateCarree"
 CODE_COLUMN = "SOV_A3"
 EDGE_WIDTH = 2.25
@@ -114,10 +107,10 @@ class PainMode(Enum):
 
         # Projection
         try:
-            merged = merged.to_crs(PROJECTIONS.get(USED_PROJECTION))
+            merged = merged.to_crs(Util.PROJECTIONS.get(USED_PROJECTION))
         except Exception as e:
             warnings.warn(f"Could not project to {USED_PROJECTION}, using PlateCarree. Error: {e}")
-            merged = merged.to_crs(PROJECTIONS["PlateCarree"])
+            merged = merged.to_crs(Util.PROJECTIONS["PlateCarree"])
         
         # Plot
         fig = plt.figure(figsize=(WIDTH_VALUE, HEIGHT_VALUE), dpi=DPI_VALUE)
