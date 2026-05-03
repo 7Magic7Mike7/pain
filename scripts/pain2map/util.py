@@ -1,5 +1,5 @@
 import sys
-from typing import Tuple, Set, Optional, Union
+from typing import Dict, Tuple, Set, Optional, Union
 import warnings
 
 from matplotlib import pyplot as plt
@@ -45,9 +45,9 @@ class Util:
         world.loc[world["SOVEREIGNT"] == "Somaliland", "sov_a3"] = "SOL"  # non-ISO, avoid collision
         return world
 
-    def get_sova3_countries() -> Set:
-        world = Util.load_world()
-        return set(world["SOVEREIGNT"])
+    def get_sova3_countries(path: Optional[str] = None) -> Dict[str, str]:
+        world = Util.load_world(path)
+        return dict(zip(world["SOVEREIGNT"], world["SOV_A3"]))
 
     def compute_sova3_subset(dataframe: pd.DataFrame, world_path: Optional[str] = None, df_country_label: str = "Country", df_value_label: str = "value") -> Tuple[pd.DataFrame, Set]:
         # Find intersection of country/location names
@@ -82,7 +82,10 @@ class Util:
 
         return pd.DataFrame(result_data), diff_data
     
-    def generate_map(data: Union[str, pd.DataFrame], world_path: str, output_path: str, args_value_col: str = "value", args_code_col: str = "sov_a3", fig_width: int = 256, fig_height: int = 128, dpi: int = 100, cmap: str = "viridis", projection: str = "PlateCarree"):
+    def generate_map(data: Union[str, pd.DataFrame], world_path: str, output_path: str, args_value_col: str = "value", args_code_col: str = "sov_a3", width: int = 512, dpi: int = 100, cmap: str = "viridis", projection: str = "PlateCarree"):
+        """
+        width: width of the output image in pixels - height will be automatically determined to maintain aspect ratio of the world geometries (is roughly 100:48)
+        """
         if isinstance(data, str):
             dataframe = pd.read_csv(data)
         else:
@@ -117,18 +120,23 @@ class Util:
             merged = merged.to_crs(Util.PROJECTIONS["PlateCarree"])
         
         # Plot
-        fig = plt.figure(figsize=(fig_width, fig_height), dpi=dpi)
+        # Convert pixel dimensions to inches for figsize
+        fig_width_inches = width / dpi
+        fig_height_inches = fig_width_inches / 2
+        fig = plt.figure(figsize=(fig_width_inches, fig_height_inches), dpi=dpi)
         ax = plt.gca()
         fig.patch.set_alpha(0)
         merged.plot(column=args_value_col, ax=ax, cmap=cmap)
 
         ax.set_axis_off()
         ax.set_aspect("equal")
-        ax.set_title("TODO Title", fontsize=14, pad=12)
+        ax.margins(0)
+        fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+        #ax.set_title("TODO Title", fontsize=14, pad=12)
 
-        # Save
+        # Save without extra transparent borders
         try:
-            plt.savefig(output_path, bbox_inches="tight", dpi=dpi, facecolor=fig.get_facecolor())
+            plt.savefig(output_path, bbox_inches="tight", pad_inches=0, dpi=dpi, transparent=True)
             print(f"Saved {output_path}")
             return True
         except Exception as e:
