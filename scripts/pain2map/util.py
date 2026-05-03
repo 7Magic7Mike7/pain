@@ -31,6 +31,8 @@ class Util:
         # Use Natural Earth low-res that ships with GeoPandas
         #world_path = gpd.datasets.get_path("naturalearth_lowres")
         if path is None:
+            if Util.__BASE_PATH is None:
+                raise ValueError("Base path not set. Please call Util.set_base_path(path) with the folder containing countries_map.zip.")
             path = os.path.join(Util.__BASE_PATH, "countries_map.zip")
         world = gpd.read_file(path)#"https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip")
         #world = gpd.read_file("https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip") #geodatasets.get_path("naturalearth_lowres"))
