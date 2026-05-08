@@ -1,3 +1,5 @@
 ﻿scripts/pain2map/__pycache__
 data/out/maps_new
 data/dummy
+!data/dummy/db_data.csv
+.venv
