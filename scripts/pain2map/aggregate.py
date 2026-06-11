@@ -77,8 +77,20 @@ class AggregatedPainData(PainData):
     c_sum = Coordinate(0, 0)
     for pd in data:
       c_sum += pd._coor
-    return Coordinate(c_sum.x / len(data), c_sum.y / len(data))
-  
+    return c_sum / len(data)
+
+  @staticmethod
+  def weighted_mid_point_coordinate(data: List[PainData], center: Coordinate) -> Coordinate:
+    c_sum = Coordinate(0, 0)
+    val_sum = 0
+    for pd in data:
+      c_sum += pd._coor * pd.val
+      val_sum += pd.val
+    if val_sum == 0:
+      # every point has a 0-weight so we simply choose their center
+      val_sum = len(data)
+    return c_sum / val_sum
+
   @staticmethod
   def max_point_coordinate(data: List[PainData], center: Coordinate) -> Coordinate:
     c_max = center  # default to center
