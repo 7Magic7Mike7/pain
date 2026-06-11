@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple, Union
 
 import pandas as pd
 import numpy as np
@@ -57,6 +57,15 @@ class PainData:
     assert bot_left.y < top_right.y, f"top_left={bot_left} must not be above top_right={top_right}"
 
     return bot_left.x <= self.lng < top_right.x and bot_left.y <= self.lat < top_right.y
+
+  def to_df_object(self, painorigin: str) -> Dict[str, Union[float, str]]:
+    return {
+      "lat": self.lat,
+      "lon": self.lng,
+      "value": self.val,
+      "datatype": self.src,
+      "painorigin": painorigin,
+    }
 
   def __str__(self) -> str:
     return f"{self.src} @ ({self.lat:.2f}|{self.lng:.2f}) = {self.val:.4f}"
@@ -119,6 +128,9 @@ class AggregatedPainData(PainData):
   @property
   def depth(self) -> int:
     return len(self.__datapoints)
+  
+  def resolve(self) -> List[PainData]:
+    return list(self.__datapoints)
   
   def __str__(self) -> str:
     return super().__str__() + f" (#{self.depth})"
