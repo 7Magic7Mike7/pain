@@ -142,6 +142,18 @@ class Coordinate:
         else:
             raise NotImplementedError(f"Subtracting \"{other}\" from a Coordinate is not supported!")
 
+    def __mul__(self, other) -> "Coordinate":
+        if isinstance(other, (int, float)):
+            return Coordinate(self.x * other, self.y * other)
+        else:
+            raise NotImplementedError(f"Multiplying a Coordinate with \"{other}\" is not supported!")
+
+    def __truediv__(self, other) -> "Coordinate":
+        if isinstance(other, (int, float)):
+            return Coordinate(self.x / other, self.y / other)
+        else:
+            raise NotImplementedError(f"Dividing a Coordinate by \"{other}\" is not supported!")
+
     def __eq__(self, other) -> bool:
         if isinstance(other, Coordinate):
             return self.x == other.x and self.y == other.y
