@@ -7,6 +7,11 @@ from .navigation import Coordinate
 
 class PainData:
   __VALUE_TOLERANCE = 1.0
+  __VERBOSE = False
+
+  @staticmethod
+  def set_verbose(verbose: bool):
+    PainData.__VERBOSE = verbose
 
   @staticmethod
   def create(lat: float, lng: float, val: float, src: str) -> "PainData":
@@ -16,10 +21,10 @@ class PainData:
     assert -90 <= coor.y < 90, f"Invalid latitude: -90 <= {coor.y} < 90 is false!"
     assert -180 <= coor.x < 180, f"Invalid longitude: -180 <= {coor.x} < 180 is false!"
     if -self.__VALUE_TOLERANCE < val < 0:
-      print(f"WARN: clamped val = {val}")
+      if PainData.__VERBOSE: print(f"WARN: clamped val = {val}")
       val = 0
     elif 1 < val < self.__VALUE_TOLERANCE:
-      print(f"WARN: clamped val = {val}")
+      if PainData.__VERBOSE: print(f"WARN: clamped val = {val}")
       val = 1
     assert 0 <= val <= 1, f"Invalid value: 0 <= {val} <= 1 is false!"
 
