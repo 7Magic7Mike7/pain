@@ -4,3 +4,4 @@ data/dummy
 !data/dummy/db_data.csv
 .venv
 data/actual
+data/raw
