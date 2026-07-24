@@ -5,3 +5,4 @@ data/dummy
 .venv
 data/actual
 data/raw
+data/convenience_data
