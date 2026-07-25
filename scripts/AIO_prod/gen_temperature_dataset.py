@@ -8,15 +8,23 @@ import xarray as xr
 
 MIN_YEAR = 1900
 MAX_YEAR = 2025
+MIN_TEMPERATURE = 1.0   # decided to be our minimal temperature (i.e., temperatures <= MIN_TEMPERATURE will have a pain value of 0)
+MAX_TEMPERATURE = 5.0   # decided to be our maximum temperature (i.e., temperatures >= MAX_TEMPERATURE will have a pain value of 1)
 
 
 def _normalize_temperature_dataset(dataframe: pd.DataFrame, category: str = "Temperature") -> pd.DataFrame:
-  max_temp, min_temp = dataframe['temperature'].max(), dataframe['temperature'].min()
-  temp_range, temp_offset = max_temp - min_temp, min_temp
+  # max_temp, min_temp = dataframe['temperature'].max(), dataframe['temperature'].min()
+  temp_range = MAX_TEMPERATURE - MIN_TEMPERATURE
+  temp_offset = MIN_TEMPERATURE
   data: List[Dict] = []
   for _, row in dataframe.iterrows():
     lat, lng, temp = row['latitude'], row['longitude'], row['temperature']
-    value = (temp - temp_offset) / temp_range
+    if temp <= MIN_TEMPERATURE:
+      value = 0.0
+    elif temp >= MAX_TEMPERATURE:
+      value = 1.0
+    else:
+      value = (temp - temp_offset) / temp_range
     data.append({
       'aggrId': None,
       'value': np.round(value, 5),
@@ -60,7 +68,7 @@ def generate_temperature_dataset(input_path: str, output_path: str, start_year: 
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
-    prog='Script for generating the Temperature Dataset',
+    prog='Script for generating the Temperature Pain Dataset',
     description='Transforms the downloaded, raw temperature dataset into a Temperature Pain Dataset usable by the PPP-Map. ' \
     'The script was built for the "Global_TAVG_Gridded_0p25deg_2020s.nc" dataset from "https://berkeleyearth.org/high-resolution-data-access-page/" ' \
     'but should work for other datasets on the same site as well.',
