@@ -1,60 +1,110 @@
 # expect OG dataset to be downloaded already into DATA_PATH
 from typing import Dict, List
+import argparse
 import os
 import numpy as np
 import pandas as pd
 import xarray as xr
 
-BASE_PATH = os.path.join("..", "..", "data")
-# where to find the raw dataset
-DATA_PATH = os.path.join(BASE_PATH, "raw", "Global_TAVG_Gridded_5deg.nc")
-# where to save the transformed dataset to
-OUT_PATH = os.path.join(BASE_PATH, "actual", "temperature", "temperature_final.csv")
-# which year(s) we want to visualize
-YEAR_START = 2020
-YEAR_END = 2025
+MIN_YEAR = 1900
+MAX_YEAR = 2025
 
-print(f"0) Loading data from {DATA_PATH}")
-# 1) transform to DataFrame
-print("1) Transforming to DataFrame")
-ds = xr.open_dataset(DATA_PATH, engine="netcdf4")
-years = np.floor(ds.time.values).astype(int)
-annual = (
-    ds["temperature"]
-    .assign_coords(year=("time", years))
-    .groupby("year")
-    .mean()
-)
-# select a specific year
-ds_year = annual.sel(
-    year=slice(str(YEAR_START), str(YEAR_END))
-).mean("year", skipna=True)
-df = ds_year.to_dataframe().reset_index()
-df_filtered = df[df['temperature'].notnull()].reset_index(drop=True)
 
-# 2) normalize values
-print("2) Normalizing Values")
-def normalize_temperature_dataset(dataframe: pd.DataFrame, category: str = "Temperature") -> pd.DataFrame:
-    max_temp, min_temp = dataframe['temperature'].max(), dataframe['temperature'].min()
-    temp_range = max_temp - min_temp
-    temp_offset = min_temp
-    data: List[Dict] = []
-    for _, row in dataframe.iterrows():
-        lat = row['latitude']
-        lon = row['longitude']
-        temp = row['temperature']
-        value = (temp - temp_offset) / temp_range
-        
-        data.append({
-            'aggrId': None,
-            'value': np.round(value, 5),
-            'category': category,
-            'lat': lat,
-            'lng': lon
-        })
+def _normalize_temperature_dataset(dataframe: pd.DataFrame, category: str = "Temperature") -> pd.DataFrame:
+  max_temp, min_temp = dataframe['temperature'].max(), dataframe['temperature'].min()
+  temp_range, temp_offset = max_temp - min_temp, min_temp
+  data: List[Dict] = []
+  for _, row in dataframe.iterrows():
+    lat, lng, temp = row['latitude'], row['longitude'], row['temperature']
+    value = (temp - temp_offset) / temp_range
+    data.append({
+      'aggrId': None,
+      'value': np.round(value, 5),
+      'category': category,
+      'lat': lat,
+      'lng': lng
+    })
+  return pd.DataFrame(data)
 
-    return pd.DataFrame(data)
-df_temp = normalize_temperature_dataset(df_filtered)
-print(f"3) Saving data to {OUT_PATH}")
-df_temp.to_csv(OUT_PATH, index=True, index_label="id")
-print("-done-")
+def generate_temperature_dataset(input_path: str, output_path: str, start_year: int, end_year: int, verbose: bool = True):
+  assert MIN_YEAR <= start_year <= MAX_YEAR
+  assert MIN_YEAR <= end_year <= MAX_YEAR
+  assert start_year <= end_year
+
+  if verbose: print(f"0) Loading data from {input_path}")
+
+  # 1) transform to DataFrame
+  if verbose: print("1) Transforming to DataFrame")
+  ds = xr.open_dataset(input_path, engine="netcdf4")
+  years = np.floor(ds.time.values).astype(int)
+  annual = (
+      ds["temperature"]
+      .assign_coords(year=("time", years))
+      .groupby("year")
+      .mean()
+  )
+  # select a specific year
+  ds_year = annual.sel(
+      year=slice(str(start_year), str(end_year))
+  ).mean("year", skipna=True)
+  df = ds_year.to_dataframe().reset_index()
+  df_filtered = df[df['temperature'].notnull()].reset_index(drop=True)
+
+  # 2) normalize values
+  if verbose: print("2) Normalizing Values")
+  df_temp = _normalize_temperature_dataset(df_filtered)
+  if verbose: print(f"3) Saving data to {output_path}")
+  df_temp.to_csv(output_path, index=True, index_label="id")
+  if verbose: print("-done-")
+
+
+if __name__ == "__main__":
+  parser = argparse.ArgumentParser(
+    prog='Script for generating the Temperature Dataset',
+    description='Transforms the downloaded, raw temperature dataset into a Temperature Pain Dataset usable by the PPP-Map. ' \
+    'The script was built for the "Global_TAVG_Gridded_0p25deg_2020s.nc" dataset from "https://berkeleyearth.org/high-resolution-data-access-page/" ' \
+    'but should work for other datasets on the same site as well.',
+    epilog=''
+  )
+  parser.add_argument("-bp", "--base-path", type=str, help="common base path shared among input and output file")
+  parser.add_argument("-i", "-in", "--input", type=str, help="path to the input file")
+  parser.add_argument("-o", "-out", "--output", type=str, help="path to the output file")
+  parser.add_argument("-sy", "--start-year", type=int, help="Start year to consider for computing the mean temperature")
+  parser.add_argument("-ey", "--end-year", type=int, help="End year to consider for computing the mean temperature")
+  parser.add_argument("-q", "--quiet", action='store_true', help="Whehter to be quiet or print messages informing about completed steps")
+
+  args = parser.parse_args()
+  print(args)
+  start_year = args.start_year if args.start_year else 2020
+  end_year = args.end_year if args.end_year else MAX_YEAR
+  if start_year < MIN_YEAR or MAX_YEAR < start_year:
+    print(f"Invalid start_year! {MIN_YEAR} <= {start_year} <= {MAX_YEAR} must be True")
+    exit(1)
+  if end_year < MIN_YEAR or MAX_YEAR < end_year:
+    print(f"Invalid end_year! {MIN_YEAR} <= {end_year} <= {MAX_YEAR} must be True")
+    exit(1)
+  if end_year < start_year:
+    print(f"Invalid year range! {start_year}(start_year) <= {end_year}(end_year) must be True")
+    exit(1)
+
+  print(f"Start Year = {start_year}")
+  print(f"End Year = {end_year}")
+
+  if args.base_path:
+    if args.input:
+      input_path = args.input
+    else:
+      print("Specifying a base_path requires an input argument but none was provided!")
+      exit(1)
+    if args.output:
+      output_path = args.output
+    else:
+      print("Specifying a base_path requires an output argument but none was provided!")
+      exit(1)
+  else:
+    input_path = args.input if args.input else \
+      os.path.join("..", "..", "data", "raw", "Global_TAVG_Gridded_0p25deg_2020s.nc") # "Global_TAVG_Gridded_5deg.nc")
+    output_path = args.output if args.output else \
+      os.path.join("..", "..", "data", "actual", "temperature", "temperature_final.csv")
+
+  generate_temperature_dataset(input_path, output_path, start_year, end_year, verbose=not args.quiet)
