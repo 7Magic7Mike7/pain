@@ -162,10 +162,6 @@ class AggregationManager:
   __MAX_LNG = 180   # exclusive
 
   @staticmethod
-  def _to_src(category: str) -> str:
-    return f"{category}"
-
-  @staticmethod
   def _compute_center(ix: int, iy: int, lng_step: float, lat_step: float) -> Coordinate:
     """
     Computes the center by first computing the bottom left corner of the area according to step sizes
@@ -185,7 +181,6 @@ class AggregationManager:
     self.__lat_step = lat_step
     self.__lng_step = lng_step
     self.__src_filter = src_filter
-    self.__next_id = 1
 
   def aggregate(self, dataset: pd.DataFrame, aggr_func: Optional[Callable[[List[PainData]], float]] = None, coor_func: Optional[Callable[[List[PainData], Coordinate], Coordinate]] = None) -> List[AggregatedPainData]:
     """
@@ -197,42 +192,60 @@ class AggregationManager:
     if coor_func is None:
       coor_func = AggregatedPainData.center_coordinate
 
-    # asign every point its x & y aggregation index (i.e., points with the same indices will be aggregated)
-    dataset["aggr_x"] = np.floor(dataset["lng"] / self.__lng_step).astype(int)
-    dataset["aggr_y"] = np.floor(dataset["lat"] / self.__lat_step).astype(int)
+    # compute aggregation indices vectorized
+    df = dataset.copy()
+    df["aggr_x"] = np.floor(df["lng"] / self.__lng_step).astype(int)
+    df["aggr_y"] = np.floor(df["lat"] / self.__lat_step).astype(int)
 
-    self.__next_id = 1
-    def get_next_id() -> int:
-      cur_id = self.__next_id
-      self.__next_id += 1
-      return cur_id
+    # ensure input is not already aggregated
+    if not df["aggrId"].isna().all():
+      raise AssertionError("Can only aggregate datasets that are not yet aggregated!")
 
-    # perform the aggregation
-    cache: Dict[Coordinate, List[PainData]] = {}   # stores info for building AggregatedPainData
+    # apply source filter (vectorized)
+    if self.__src_filter is None:
+      filtered = df
+    else:
+      filtered = df[df["category"].astype(str).str.contains(self.__src_filter)].copy()
+
+    # assign sequential ids for raw PainData
+    filtered = filtered.reset_index(drop=True)
+    num_raw = len(filtered)
+    filtered["id"] = np.arange(1, num_raw + 1)
+
+    # group by grid cell and category so every group's points share the same src
+    groups = filtered.groupby(["aggr_x", "aggr_y", "category"], sort=False)
+
+    cache: List[Tuple[Coordinate, List[PainData]]] = []
     error_occurred = False
-    for _, row in dataset.iterrows():
-      aggrId, value, category, lat, lng, aggr_x, aggr_y = row   # id is missing since we recreate it
-      assert not aggrId or np.isnan(aggrId), "Can only aggregate datasets that are not yet aggregated!"
 
-      if value < 0 or 1 < value:
-        debug = True
-
-      src = self._to_src(category)
-      if self.__src_filter is None or self.__src_filter in src:
-        center = self._compute_center(aggr_x, aggr_y, self.__lng_step, self.__lat_step) # Todo: not sure if center is actually needed
-
-        if center not in cache:
-          cache[center] = []
-
+    for (ix, iy, category), grp in groups:
+      center = self._compute_center(ix, iy, self.__lng_step, self.__lat_step)
+      pts: List[PainData] = []
+      # iterate only within each group (smaller loops)
+      for row in grp.itertuples(index=False):
         try:
-          pd = PainData.create(get_next_id(), lat, lng, value, src)
-          cache[center].append(pd)
+          # access by attribute names (column names are known)
+          id = int(getattr(row, "id"))
+          lat = float(getattr(row, "lat"))
+          lng = float(getattr(row, "lng"))
+          value = float(getattr(row, "value"))
+          pd_obj = PainData.create(id, lat, lng, value, category)
+          pts.append(pd_obj)
         except AssertionError as err:
           print(f"Assertion for id={id}: ", err)
           error_occurred = True
           continue
+      if pts:
+        cache.append((center, pts))
 
-      # else: filter out this row
     if error_occurred:
       raise Exception("Error occurred. Consider stdout for details.")
-    return [AggregatedPainData.from_funcs(get_next_id(), cache[key], key, aggr_func, coor_func) for key in cache.keys()]
+
+    # create aggregated IDs continuing after raw ids
+    next_aggr_id = num_raw + 1
+    result: List[AggregatedPainData] = []
+    for center, pts in cache:
+      result.append(AggregatedPainData.from_funcs(next_aggr_id, pts, center, aggr_func, coor_func))
+      next_aggr_id += 1
+
+    return result
