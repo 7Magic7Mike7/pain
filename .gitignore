@@ -6,3 +6,4 @@ data/dummy
 data/actual
 data/raw
 data/convenience_data
+scripts/**/__pycache__
