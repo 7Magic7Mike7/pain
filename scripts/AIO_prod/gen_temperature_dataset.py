@@ -16,23 +16,18 @@ def _normalize_temperature_dataset(dataframe: pd.DataFrame, category: str = "Tem
   # max_temp, min_temp = dataframe['temperature'].max(), dataframe['temperature'].min()
   temp_range = MAX_TEMPERATURE - MIN_TEMPERATURE
   temp_offset = MIN_TEMPERATURE
-  data: List[Dict] = []
-  for _, row in dataframe.iterrows():
-    lat, lng, temp = row['latitude'], row['longitude'], row['temperature']
-    if temp <= MIN_TEMPERATURE:
-      value = 0.0
-    elif temp >= MAX_TEMPERATURE:
-      value = 1.0
-    else:
-      value = (temp - temp_offset) / temp_range
-    data.append({
-      'aggrId': None,
-      'value': np.round(value, 5),
-      'category': category,
-      'lat': lat,
-      'lng': lng
-    })
-  return pd.DataFrame(data)
+  # clip 0: every temperature below MIN_TEMPERATURE will get a value of 0 (the result without clip would be < 0)
+  # clip 1: every temperature above MAX_TEMPERATURE will get a value of 1 (the result without clip would be > 1)
+  value = (
+    (dataframe["temperature"] - temp_offset) / temp_range
+  ).clip(0, 1).round(5)
+  return pd.DataFrame({
+      "aggrId": None,
+      "value": value,
+      "category": category,
+      "lat": dataframe["latitude"],
+      "lng": dataframe["longitude"],
+  })
 
 def generate_temperature_dataset(input_path: str, output_path: str, start_year: int, end_year: int, verbose: bool = True):
   assert MIN_YEAR <= start_year <= MAX_YEAR
