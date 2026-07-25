@@ -8,6 +8,26 @@ from .navigation import Coordinate
 class PainData:
   __VALUE_TOLERANCE = 1.0
   __VERBOSE = False
+  _MIN_LAT = -90
+  _MAX_LAT = 90
+  _MIN_LNG = -180
+  _MAX_LNG = 180
+
+  @staticmethod
+  def MIN_LAT():
+    return PainData._MIN_LAT
+
+  @staticmethod
+  def MAX_LAT():
+    return PainData._MAX_LAT
+
+  @staticmethod
+  def MIN_LNG():
+    return PainData._MIN_LNG
+
+  @staticmethod
+  def MAX_LNG():
+    return PainData._MAX_LNG
 
   @staticmethod
   def set_verbose(verbose: bool):
@@ -17,17 +37,21 @@ class PainData:
   def create(id: int, lat: float, lng: float, val: float, src: str) -> "PainData":
     return PainData(id, Coordinate(lng, lat), val, src)
 
+  @staticmethod
+  def assert_coordinate(coor: Coordinate, id: int):
+    assert PainData._MIN_LAT <= coor.y < PainData._MAX_LAT, f"Invalid latitude for id={id}: {PainData._MIN_LAT} <= {coor.y} < {PainData._MAX_LAT} is false!"
+    assert PainData._MIN_LNG <= coor.x < PainData._MAX_LNG, f"Invalid longitude for id={id}: {PainData._MIN_LNG} <= {coor.x} < {PainData._MAX_LNG} is false!"
+
   def __init__(self, id: int, coor: Coordinate, val: float, src: str):
     assert 0 < id, f"Invalid id: 0 < {id} is false!"
-    assert -90 <= coor.y < 90, f"Invalid latitude: -90 <= {coor.y} < 90 is false!"
-    assert -180 <= coor.x < 180, f"Invalid longitude: -180 <= {coor.x} < 180 is false!"
+    PainData.assert_coordinate(coor, id)
     if -self.__VALUE_TOLERANCE < val < 0:
-      if PainData.__VERBOSE: print(f"WARN: clamped val = {val}")
+      if PainData.__VERBOSE: print(f"WARN for id={id}: clamped val = {val}")
       val = 0
     elif 1 < val < self.__VALUE_TOLERANCE:
-      if PainData.__VERBOSE: print(f"WARN: clamped val = {val}")
+      if PainData.__VERBOSE: print(f"WARN for id={id}: clamped val = {val}")
       val = 1
-    assert 0 <= val <= 1, f"Invalid value: 0 <= {val} <= 1 is false!"
+    assert 0 <= val <= 1, f"Invalid value for id={id}: 0 <= {val} <= 1 is false!"
 
     self.__id = id
     self.__aggrId: Optional[int] = None
@@ -96,8 +120,12 @@ class AggregatedPainData(PainData):
     return val_sum / len(data)
 
   @staticmethod
+  def max_aggregation(data: List[PainData]) -> float:
+    return max([pd.val for pd in data])
+
+  @staticmethod
   def center_coordinate(data: List[PainData], center: Coordinate) -> Coordinate:
-    return Coordinate(center.x, center.y)   # todo: compute center so we don't have to pass it and can skip it?
+    return Coordinate(center.x, center.y)
 
   @staticmethod
   def mid_point_coordinate(data: List[PainData], center: Coordinate) -> Coordinate:
@@ -131,13 +159,14 @@ class AggregatedPainData(PainData):
   @staticmethod
   def from_funcs(id: int, data: List[PainData], center: Coordinate, aggregation_func: Callable[[List[PainData]], float], coordinate_func: Callable[[List[PainData], Coordinate], Coordinate]) -> "AggregatedPainData":
     coor = coordinate_func(data, center)
+    PainData.assert_coordinate(coor, id)
     return AggregatedPainData(id, coor, data, aggregation_func)
 
   def __init__(self, id: int, coor: Coordinate, data: List[PainData], aggregation_func: Callable[[List[PainData]], float]):
-    assert len(data) > 0, "No empty list allowed!"
+    assert len(data) > 0, "Invalid data for id={id}: No empty list allowed!"
     src = data[0].src
     for pd in data:
-      assert pd.src == src, f"All data points must be from the same source: {pd.src} != {src}"
+      assert pd.src == src, f"Invalid src at id={id} for pd.id={pd.id}: All data points must be from the same source: {pd.src} != {src}"
       assert pd._set_aggrId(id), f"Failed to set aggrId={id} for datapoint #{pd.id} as it already has aggrId={pd.aggrId}"
     val = aggregation_func(data)
 
@@ -160,6 +189,44 @@ class AggregationManager:
   __MAX_LAT = 90    # exclusive
   __MIN_LNG = -180  # inclusive
   __MAX_LNG = 180   # exclusive
+
+  @staticmethod
+  def get_aggr_func_from_name(name: str) -> Callable[[List[PainData]], float]:
+    """
+    Normalizes the given name (case-insensitive, ignoring whitespace, - and _) and returns its associated function to compute a pain value
+    from a list of PainData.
+    Supported values include: "average" and "max"
+    param name: name of the function to retrieve
+    returns: the pain value computation function associated with the given name
+    throws: Exception for unknown names
+    """
+    norm_name = name.lower()
+    if norm_name in ["avg", "average"]:
+      return AggregatedPainData.avg_aggregation
+    elif norm_name in ["max", "maximum"]:
+      return AggregatedPainData.max_aggregation
+    raise Exception(f"Unknown aggregation function: \"{name}\"")
+
+  @staticmethod
+  def get_coor_func_from_name(name: str) -> Callable[[List[PainData], Coordinate], Coordinate]:
+    """
+    Normalizes the given name (case-insensitive, ignoring whitespace, - and _) and returns its associated function to compute a Coordiante
+    from a list of PainData and the center Coordinate of their aggregation region.
+    Supported values include: "center", "mid", "weightedmid" and "max"
+    param name: name of the function to retrieve
+    returns: the coordinate computation function associated with the given name
+    throws: Exception for unknown names
+    """
+    norm_name = name.lower().replace(" ", "").replace("-", "").replace("_", "")
+    if norm_name in ["center"]:
+      return AggregatedPainData.center_coordinate
+    elif norm_name in ["mid", "midpoint"]:
+      return AggregatedPainData.mid_point_coordinate
+    elif norm_name in ["wmid", "weightedmid", "weightedmidpoint"]:
+      return AggregatedPainData.weighted_mid_point_coordinate
+    elif norm_name in ["max", "maxpoint"]:
+      return AggregatedPainData.max_point_coordinate
+    raise Exception(f"Unknown coordinate function: \"{name}\"")
 
   @staticmethod
   def _compute_center(ix: int, iy: int, lng_step: float, lat_step: float) -> Coordinate:
@@ -220,6 +287,11 @@ class AggregationManager:
 
     for (ix, iy, category), grp in groups:
       center = self._compute_center(ix, iy, self.__lng_step, self.__lat_step)
+      try:
+        PainData.assert_coordinate(center, -1)
+      except AssertionError as err:
+        print(f"Center for ix={ix}, iy={iy}, lng-step={self.__lng_step}, lat-step={self.__lat_step} is invalid: center={center}")
+
       pts: List[PainData] = []
       # iterate only within each group (smaller loops)
       for row in grp.itertuples(index=False):
