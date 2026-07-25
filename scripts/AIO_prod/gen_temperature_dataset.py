@@ -69,17 +69,18 @@ if __name__ == "__main__":
     'but should work for other datasets on the same site as well.',
     epilog=''
   )
-  parser.add_argument("-bp", "--base-path", type=str, help="common base path shared among input and output file")
-  parser.add_argument("-i", "-in", "--input", type=str, help="path to the input file")
-  parser.add_argument("-o", "-out", "--output", type=str, help="path to the output file")
+  parser.add_argument("-bp", "--base-path", type=str, help="Common base path shared among input and output file")
+  parser.add_argument("-i", "-in", "--input", type=str, help="Path to the input file")
+  parser.add_argument("-o", "-out", "--output", type=str, help="Path to the output file")
   parser.add_argument("-sy", "--start-year", type=int, help="Start year to consider for computing the mean temperature")
   parser.add_argument("-ey", "--end-year", type=int, help="End year to consider for computing the mean temperature")
-  parser.add_argument("-q", "--quiet", action='store_true', help="Whehter to be quiet or print messages informing about completed steps")
+  parser.add_argument("-q", "--quiet", action='store_true', help="Whether to be quiet or print messages informing about completed steps")
 
   args = parser.parse_args()
-  print(args)
-  start_year = args.start_year if args.start_year else 2020
-  end_year = args.end_year if args.end_year else MAX_YEAR
+  start_year = args.start_year if args.start_year else \
+    2020
+  end_year = args.end_year if args.end_year else \
+    MAX_YEAR
   if start_year < MIN_YEAR or MAX_YEAR < start_year:
     print(f"Invalid start_year! {MIN_YEAR} <= {start_year} <= {MAX_YEAR} must be True")
     exit(1)
@@ -90,17 +91,14 @@ if __name__ == "__main__":
     print(f"Invalid year range! {start_year}(start_year) <= {end_year}(end_year) must be True")
     exit(1)
 
-  print(f"Start Year = {start_year}")
-  print(f"End Year = {end_year}")
-
   if args.base_path:
     if args.input:
-      input_path = args.input
+      input_path = os.path.join(args.base_path, args.input)
     else:
       print("Specifying a base_path requires an input argument but none was provided!")
       exit(1)
     if args.output:
-      output_path = args.output
+      output_path = os.path.join(args.base_path, args.output)
     else:
       print("Specifying a base_path requires an output argument but none was provided!")
       exit(1)
