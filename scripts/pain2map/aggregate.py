@@ -75,10 +75,10 @@ class PainData:
 
     return bot_left.x <= self.lng < top_right.x and bot_left.y <= self.lat < top_right.y
 
-  def to_df_object(self) -> Dict[str, Union[float, str]]:
+  def to_df_object(self) -> Dict[str, Union[int, float, str]]:
     return {
       "id": self.id,
-      "aggrId": self.aggrId,
+      "aggrId": pd.NA if self.aggrId is None else self.aggrId,
       "value": self.val,
       "category": self.src,
       "lat": self.lat,
