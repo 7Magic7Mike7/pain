@@ -119,8 +119,7 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
   chunk_index = 0
   file_size = os.path.getsize(input_path)
 
-  with open(input_path, "r", newline="") as csv_file:
-    for chunk in pd.read_csv(csv_file, chunksize=chunk_size):#, compression=compression):
+  for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression):
       chunk["aggr_x"] = np.floor(chunk["lng"] / lng_degrees).astype(int)
       chunk["aggr_y"] = np.floor(chunk["lat"] / lat_degrees).astype(int)
       chunk = chunk.reset_index(drop=True)
@@ -131,8 +130,7 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
       num_raw += len(chunk)
       chunk_index += 1
       if verbose:
-        processed_bytes = csv_file.tell()
-        progress = min(processed_bytes / file_size * 100.0, 100.0)
+        progress = min(num_raw / file_size * 100.0, 100.0)
         print(f"Scanned chunk {chunk_index}; approx {progress:.1f}% of input")  # Note: for very small chunk & file sizes this will be wrong as the file is read in one go
 
       for row in chunk.itertuples(index=False):
@@ -164,24 +162,23 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
       print("2) Writing raw rows with assigned aggrId...")
     first_chunk = True
     row_id = 0
-    with open(input_path, "r", newline="") as csv_file:
-      for chunk in pd.read_csv(csv_file, chunksize=chunk_size):
-        chunk["aggr_x"] = np.floor(chunk["lng"] / lng_degrees).astype(int)
-        chunk["aggr_y"] = np.floor(chunk["lat"] / lat_degrees).astype(int)
-        chunk = chunk.reset_index(drop=True)
-        chunk["id"] = np.arange(row_id + 1, row_id + len(chunk) + 1)
-        row_id += len(chunk)
+    for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression):
+      chunk["aggr_x"] = np.floor(chunk["lng"] / lng_degrees).astype(int)
+      chunk["aggr_y"] = np.floor(chunk["lat"] / lat_degrees).astype(int)
+      chunk = chunk.reset_index(drop=True)
+      chunk["id"] = np.arange(row_id + 1, row_id + len(chunk) + 1)
+      row_id += len(chunk)
 
-        # map each row's group to its aggregated id
-        def _map_aggr_id(r):
-          k = (int(r.aggr_x), int(r.aggr_y), r.category)
-          return group_to_aggr_id.get(k, pd.NA)
+      # map each row's group to its aggregated id
+      def _map_aggr_id(r):
+        k = (int(r.aggr_x), int(r.aggr_y), r.category)
+        return group_to_aggr_id.get(k, pd.NA)
 
-        chunk["aggrId"] = [ _map_aggr_id(r) for r in chunk.itertuples(index=False) ]
+      chunk["aggrId"] = [_map_aggr_id(r) for r in chunk.itertuples(index=False)]
 
-        raw_columns = ["id", "aggrId", "value", "category", "lat", "lng"]
-        chunk[raw_columns].to_csv(output_path, index=False, mode="w" if first_chunk else "a", header=first_chunk)#, compression=compression)
-        first_chunk = False
+      raw_columns = ["id", "aggrId", "value", "category", "lat", "lng"]
+      chunk[raw_columns].to_csv(output_path, index=False, mode="w" if first_chunk else "a", header=first_chunk, compression=compression)
+      first_chunk = False
   else:
     if verbose:
       print("2) Skipping raw row output because include_base_data is false")
@@ -215,7 +212,7 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
 
   df_aggr = pd.DataFrame(aggregated_rows, columns=["id", "aggrId", "value", "category", "lat", "lng"])
   # append aggregated rows to the output (or write alone if base-data was skipped)
-  df_aggr.to_csv(output_path, mode="a" if include_base_data else "w", header=not include_base_data, index=False)
+  df_aggr.to_csv(output_path, index=False, mode="a" if include_base_data else "w", header=not include_base_data, compression=compression)
 
   if verbose:
     print("-done-")
