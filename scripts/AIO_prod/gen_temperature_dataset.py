@@ -1,5 +1,4 @@
 # expect OG dataset to be downloaded already into DATA_PATH
-from typing import Dict, List
 import argparse
 import os
 import numpy as np
@@ -56,8 +55,11 @@ def generate_temperature_dataset(input_path: str, output_path: str, start_year: 
   # 2) normalize values
   if verbose: print("2) Normalizing Values")
   df_temp = _normalize_temperature_dataset(df_filtered)
+
+  # 3) save result
   if verbose: print(f"3) Saving data to {output_path}")
   df_temp.to_csv(output_path, index=True, index_label="id")
+  
   if verbose: print("-done-")
 
 
