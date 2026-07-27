@@ -1,5 +1,5 @@
 # Imports
-from typing import Callable, List, Optional, Tuple
+from typing import List
 import argparse
 import os
 import pandas as pd
@@ -54,7 +54,7 @@ if __name__ == "__main__":
                       help="Which function to use for computing the aggregated data point's coordinate (center, mid, weightedmid, max)")
   parser.add_argument("-nobd", "--no-base-data", action='store_true', help="Whether to include the unaggregated base data points in the exported file")
   parser.add_argument("-q", "--quiet", action='store_true', help="Whether to be quiet or print messages informing about completed steps")
-  
+
   args = parser.parse_args()
   if not args.input:
     print("No input file path provided!")
