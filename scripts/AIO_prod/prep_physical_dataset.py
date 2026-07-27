@@ -12,11 +12,18 @@ EXPECTED_CHUNK_COUNT = 21_708 * 100_000  # for chunk_size = 100_000, the first p
 def perform(input_path: str, output_path: str, chunk_size: int, metric: str = "Percent"):
   expected_chunks = int(EXPECTED_CHUNK_COUNT / chunk_size)
   # Create a stripped down dataset with only the needed columns and rows
-  output_columns = ["lat", "lon", "cause_name", "pixel_abs_prevalence"]
+  input_columns = ["lat", "lon", "cause_name", "pixel_abs_prevalence"]
+  rename_map = {
+      "cause_name": "category",
+      "lon": "lng",
+      "pixel_abs_prevalence": "value",
+  }
+  writer_columns = ["lat", "lng", "category", "value"]
+
   reader = pd.read_csv(
       input_path,
       chunksize=chunk_size,
-      usecols=output_columns + ["metric_name"],
+      usecols=input_columns + ["metric_name"],
       dtype={
         "cause_name": "category",
       },
@@ -33,8 +40,10 @@ def perform(input_path: str, output_path: str, chunk_size: int, metric: str = "P
     while True:
       try:
         chunk = next(reader)
-        filtered_chunk = chunk.loc[chunk["metric_name"] == metric, output_columns]
+        filtered_chunk = chunk.loc[chunk["metric_name"] == metric, input_columns]
         if not filtered_chunk.empty:
+          filtered_chunk = filtered_chunk.rename(columns=rename_map)
+          filtered_chunk = filtered_chunk[writer_columns]
           filtered_chunk.to_csv(handle, index=False, header=first_write)
           first_write = False
           written_rows += len(filtered_chunk)
