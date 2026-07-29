@@ -1,6 +1,6 @@
 # Imports
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 import argparse
 import numpy as np
 import os
@@ -10,6 +10,13 @@ import time
 # my scripts
 from scripts.pain2map import AggregationManager, AggregatedPainData, PainData, Coordinate
 
+# constants
+COL_VAL = "value"
+COL_CAT = "category"
+COL_LAT = "lat"
+COL_LNG = "lng"
+
+# helper methods
 def _compute_center(ix: int, iy: int, lng_degrees: float, lat_degrees: float) -> Coordinate:
   """
   Computes the center by first computing the bottom left corner of the area according to step sizes
@@ -51,6 +58,8 @@ def _compute_aggregated_value(summary: AggregationSummary, aggr_func: callable) 
     return summary.sum_val / summary.count
   if aggr_func == AggregatedPainData.max_aggregation:
     return summary.max_val
+  if aggr_func == AggregatedPainData.sum_aggregation:
+    return summary.sum_val
   raise Exception(f"Unsupported aggregation function: {aggr_func}")
 
 
@@ -68,47 +77,65 @@ def _compute_aggregated_coordinate(summary: AggregationSummary, coor_func: calla
   raise Exception(f"Unsupported coordinate function: {coor_func}")
 
 
-def _validate_chunk(chunk: pd.DataFrame, verbose: bool) -> None:
+def _validate_chunk(chunk: pd.DataFrame, verbose: bool, validate_values: bool, column_names: Dict[str, str]) -> None:
+  """
+  :param validate_values: whether to check if values are between 0 and 1 (both inclusive)
+  """
   if "aggrId" not in chunk.columns:
     chunk["aggrId"] = pd.NA
 
   if not chunk["aggrId"].isna().all():
     raise AssertionError("Can only aggregate datasets that are not yet aggregated!")
 
-  chunk["value"] = chunk["value"].astype(float)
-  values = chunk["value"].to_numpy(copy=False)
+  chunk[column_names[COL_VAL]] = chunk[column_names[COL_VAL]].astype(float)
+  values = chunk[column_names[COL_VAL]].to_numpy(copy=False)
   near_zero = (values > -1.0) & (values < 0.0)
   if near_zero.any():
     if verbose:
       print("Clamping values slightly below 0.0 to 0.0")
     values[near_zero] = 0.0
 
-  invalid_values = (values < 0.0) | (values > 1.0)
-  if invalid_values.any():
-    invalid_index = int(chunk.index[invalid_values][0])
-    invalid_row = chunk.iloc[invalid_index]
-    raise AssertionError(f"Invalid value for id={int(invalid_row['id'])}: {invalid_row['value']}")
+  if validate_values:
+    invalid_values = (values < 0.0) | (values > 1.0)
+    if invalid_values.any():
+      invalid_index = int(chunk.index[invalid_values][0])
+      invalid_row = chunk.iloc[invalid_index]
+      raise AssertionError(f"Invalid value for id={int(invalid_row['id'])}: {invalid_row['value']}")
 
-  chunk["lat"] = chunk["lat"].astype(float)
-  chunk["lng"] = chunk["lng"].astype(float)
-  invalid_lat = (chunk["lat"] < PainData.MIN_LAT()) | (chunk["lat"] >= PainData.MAX_LAT())
-  invalid_lng = (chunk["lng"] < PainData.MIN_LNG()) | (chunk["lng"] >= PainData.MAX_LNG())
+  chunk[column_names[COL_LAT]] = chunk[column_names[COL_LAT]].astype(float)
+  chunk[column_names[COL_LNG]] = chunk[column_names[COL_LNG]].astype(float)
+  invalid_lat = (chunk[column_names[COL_LAT]] < PainData.MIN_LAT()) | (chunk[column_names[COL_LAT]] >= PainData.MAX_LAT())
+  invalid_lng = (chunk[column_names[COL_LNG]] < PainData.MIN_LNG()) | (chunk[column_names[COL_LNG]] >= PainData.MAX_LNG())
   invalid_coords = invalid_lat | invalid_lng
   if invalid_coords.any():
     invalid_index = int(chunk.index[invalid_coords][0])
     invalid_row = chunk.iloc[invalid_index]
     raise AssertionError(
-      f"Invalid coordinate for id={int(invalid_row['id'])}: lat={invalid_row['lat']}, lng={invalid_row['lng']}"
+      f"Invalid coordinate for id={int(invalid_row['id'])}: lat={invalid_row[column_names[COL_LAT]]}, lng={invalid_row[column_names[COL_LNG]]}"
     )
 
 
-def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: float, aggr_func_name: str, coor_func_name: str, 
-            chunk_size: int, include_base_data: bool = True, verbose: bool = True, compression: str = "infer"):
+def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: float, aggr_func_name: str, coor_func_name: str, chunk_size: int,
+            include_base_data: bool = True, compression_in: str = "infer", compression_out: Optional[str] = None, column_names: Optional[Dict[str, str]] = None,
+            validate_values: bool = True, verbose: bool = True):
   # prepare parameters
   if verbose:
     print("0) Preparing aggregation...")
   aggr_func = AggregationManager.get_aggr_func_from_name(aggr_func_name)
   coor_func = AggregationManager.get_coor_func_from_name(coor_func_name)
+
+  if not column_names:
+    column_names = {}
+  if COL_VAL not in column_names:
+    column_names[COL_VAL] = COL_VAL
+  if COL_CAT not in column_names:
+    column_names[COL_CAT] = COL_CAT
+  if COL_LAT not in column_names:
+    column_names[COL_LAT] = COL_LAT
+  if COL_LNG not in column_names:
+    column_names[COL_LNG] = COL_LNG
+  #print(column_names)
+  #return
 
   # perform aggregation (first pass: build summaries and count raw rows)
   if verbose:
@@ -119,13 +146,13 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
   chunk_index = 0
   file_size = os.path.getsize(input_path)
 
-  for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression):
-      chunk["aggr_x"] = np.floor(chunk["lng"] / lng_degrees).astype(int)
-      chunk["aggr_y"] = np.floor(chunk["lat"] / lat_degrees).astype(int)
+  for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression_in):
+      chunk["aggr_x"] = np.floor(chunk[column_names[COL_LNG]] / lng_degrees).astype(int)
+      chunk["aggr_y"] = np.floor(chunk[column_names[COL_LAT]] / lat_degrees).astype(int)
       chunk = chunk.reset_index(drop=True)
       chunk["id"] = np.arange(num_raw + 1, num_raw + len(chunk) + 1)
 
-      _validate_chunk(chunk, verbose)
+      _validate_chunk(chunk, verbose, validate_values, column_names)
 
       num_raw += len(chunk)
       chunk_index += 1
@@ -137,20 +164,24 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
         key = (
           int(getattr(row, "aggr_x")),
           int(getattr(row, "aggr_y")),
-          getattr(row, "category"),
+          getattr(row, column_names[COL_CAT]),
         )
         summary = groups.get(key)
         if summary is None:
           summary = AggregationSummary()
           groups[key] = summary
         summary.add_point(
-          float(getattr(row, "lat")),
-          float(getattr(row, "lng")),
-          float(getattr(row, "value")),
+          float(getattr(row, column_names[COL_LAT])),
+          float(getattr(row, column_names[COL_LNG])),
+          float(getattr(row, column_names[COL_VAL])),
         )
 
-  # assign aggregated IDs (continuing after raw ids)
-  next_aggr_id = num_raw + 1
+  # assign aggregated IDs
+  if include_base_data:
+    next_aggr_id = num_raw + 1
+  else:
+    next_aggr_id = 1
+
   group_to_aggr_id: Dict[Tuple[int, int, str], int] = {}
   for key in groups.keys():
     group_to_aggr_id[key] = next_aggr_id
@@ -162,9 +193,9 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
       print("2) Writing raw rows with assigned aggrId...")
     first_chunk = True
     row_id = 0
-    for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression):
-      chunk["aggr_x"] = np.floor(chunk["lng"] / lng_degrees).astype(int)
-      chunk["aggr_y"] = np.floor(chunk["lat"] / lat_degrees).astype(int)
+    for chunk in pd.read_csv(input_path, chunksize=chunk_size, compression=compression_in):
+      chunk["aggr_x"] = np.floor(chunk[column_names[COL_LNG]] / lng_degrees).astype(int)
+      chunk["aggr_y"] = np.floor(chunk[column_names[COL_LAT]] / lat_degrees).astype(int)
       chunk = chunk.reset_index(drop=True)
       chunk["id"] = np.arange(row_id + 1, row_id + len(chunk) + 1)
       row_id += len(chunk)
@@ -176,8 +207,8 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
 
       chunk["aggrId"] = [_map_aggr_id(r) for r in chunk.itertuples(index=False)]
 
-      raw_columns = ["id", "aggrId", "value", "category", "lat", "lng"]
-      chunk[raw_columns].to_csv(output_path, index=False, mode="w" if first_chunk else "a", header=first_chunk, compression=compression)
+      raw_columns = ["id", "aggrId", column_names[COL_VAL], column_names[COL_CAT], column_names[COL_LAT], column_names[COL_LNG]]
+      chunk[raw_columns].to_csv(output_path, index=False, mode="w" if first_chunk else "a", header=first_chunk, compression=compression_out)
       first_chunk = False
   else:
     if verbose:
@@ -204,15 +235,15 @@ def perform(input_path: str, output_path: str, lat_degrees: float, lng_degrees: 
     aggregated_rows.append({
       "id": aggr_id,
       "aggrId": pd.NA,
-      "value": value,
-      "category": category,
-      "lat": coordinate.y,
-      "lng": coordinate.x,
+      COL_VAL: value,
+      COL_CAT: category,
+      COL_LAT: coordinate.y,
+      COL_LNG: coordinate.x,
     })
 
-  df_aggr = pd.DataFrame(aggregated_rows, columns=["id", "aggrId", "value", "category", "lat", "lng"])
+  df_aggr = pd.DataFrame(aggregated_rows, columns=["id", "aggrId", COL_VAL, COL_CAT, COL_LAT, COL_LNG])
   # append aggregated rows to the output (or write alone if base-data was skipped)
-  df_aggr.to_csv(output_path, index=False, mode="a" if include_base_data else "w", header=not include_base_data, compression=compression)
+  df_aggr.to_csv(output_path, index=False, mode="a" if include_base_data else "w", header=not include_base_data, compression=compression_out)
 
   if verbose:
     print("-done-")
@@ -236,10 +267,17 @@ if __name__ == "__main__":
                       help="Which function to use for computing the aggregated data point's pain value (avg, max)")
   parser.add_argument("-fcoor", "--coordinate-function", type=str, 
                       help="Which function to use for computing the aggregated data point's coordinate (center, mid, weightedmid, max)")
+  parser.add_argument("-cnval", "-col-val", "--column-name-value", type=str, help="Dataset's name for the value column (default: value)")
+  parser.add_argument("-cncat", "-col-cat", "--column-name-category", type=str, help="Dataset's name for the category column (default: category)")
+  parser.add_argument("-cnlat", "-col-lat", "--column-name-latitude", type=str, help="Dataset's name for the latitude column (default: lat)")
+  parser.add_argument("-cnlng", "-col-lng", "--column-name-longitude", type=str, help="Dataset's name for the longitude column (default: lng)")
   parser.add_argument("-cs", "--chunk-size", help="Chunk size for streaming")
   parser.add_argument("-nobd", "--no-base-data", action='store_true', help="Whether to include the unaggregated base data points in the exported file")
   parser.add_argument("-q", "--quiet", action='store_true', help="Whether to be quiet or print messages informing about completed steps")
-  parser.add_argument("-c", "--compression", type=str, help="Compression used to read the input file. Will also be used to store the output file.")
+  parser.add_argument("-c", "--compression", type=str, help="Compression used to read the input file and write the output file. Overwrites the corresponding arguments.")
+  parser.add_argument("-cin", "--compression-in", type=str, help="Compression used to read the input file.")
+  parser.add_argument("-cout", "--compression-out", type=str, help="Compression used to write the output file.")
+  parser.add_argument("-nvv", "--no-value-validation", action='store_true', help="Whether aggregation should raise an error for values <0 or >1.")
 
   args = parser.parse_args()
   print(args)
@@ -276,11 +314,27 @@ if __name__ == "__main__":
   chunk_size = int(args.chunk_size) if args.chunk_size else \
     200_000
 
-  compression = args.compression if args.compression else \
+  compression_in = args.compression_in if args.compression_in else \
     "infer"
+  compression_out = args.compression_out if args.compression_out else \
+    None
+  if args.compression:
+    compression_in = args.compression
+    compression_out = args.compression
+
+  column_names = {}
+  if args.column_name_value:
+    column_names[COL_VAL] = args.column_name_value
+  if args.column_name_category:
+    column_names[COL_CAT] = args.column_name_category
+  if args.column_name_latitude:
+    column_names[COL_LAT] = args.column_name_latitude
+  if args.column_name_longitude:
+    column_names[COL_LNG] = args.column_name_longitude
 
   t_start = time.time()
   perform(input_path, output_path, lat_degrees, lng_degrees, aggr_func_name, coor_func_name, chunk_size,
-          include_base_data=not args.no_base_data, verbose=not args.quiet, compression=compression)
+          include_base_data=not args.no_base_data, compression_in=compression_in, compression_out=compression_out,
+          column_names=column_names, validate_values=not args.no_value_validation, verbose=not args.quiet)
   t_end = time.time()
   print(f"Elapsed time = {t_end - t_start}")

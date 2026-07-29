@@ -124,6 +124,10 @@ class AggregatedPainData(PainData):
     return max([pd.val for pd in data])
 
   @staticmethod
+  def sum_aggregation(data: List[PainData]) -> float:
+    return sum([pd.val for pd in data])
+
+  @staticmethod
   def center_coordinate(data: List[PainData], center: Coordinate) -> Coordinate:
     return Coordinate(center.x, center.y)
 
@@ -196,7 +200,7 @@ class AggregationManager:
     """
     Normalizes the given name (case-insensitive, ignoring whitespace, - and _) and returns its associated function to compute a pain value
     from a list of PainData.
-    Supported values include: "average" and "max"
+    Supported values include: "average", "max" and "sum"
     param name: name of the function to retrieve
     returns: the pain value computation function associated with the given name
     throws: Exception for unknown names
@@ -206,6 +210,8 @@ class AggregationManager:
       return AggregatedPainData.avg_aggregation
     elif norm_name in ["max", "maximum"]:
       return AggregatedPainData.max_aggregation
+    elif norm_name in ["sum"]:
+      return AggregatedPainData.sum_aggregation
     raise Exception(f"Unknown aggregation function: \"{name}\"")
 
   @staticmethod
