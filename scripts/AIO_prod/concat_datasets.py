@@ -10,6 +10,7 @@ def concat(input_paths: List[str], output_path: str, base_path: Optional[str] = 
   # 1) load all datasets from input_paths and concat them into one pd.DataFrame
   #   Note that the datasets have two important columns: id & aggrId (referencing the id of a different row)
   #   Since the concatenation will mess with ids, we have to make sure to update aggrIds accordingly such that they still reference the same row
+  print(f"1) Concatenating all files in {input_paths}")
   frames = []
   next_id = 1
   for input_path in input_paths:
@@ -39,10 +40,13 @@ def concat(input_paths: List[str], output_path: str, base_path: Optional[str] = 
   combined_df = pd.concat(frames, ignore_index=True)
 
   # 2) store pd.DataFrame as csv in output_path
+  print("2) Storing the concatenated DataFrame...")
   output_dir = os.path.dirname(output_path)
   if output_dir:
     os.makedirs(output_dir, exist_ok=True)
   combined_df.to_csv(output_path, index=False)
+
+  print("-done-")
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
@@ -50,7 +54,7 @@ if __name__ == "__main__":
     description='Aggregates datapoints from an input file in the specified lat/lng resolution and stores them in an output file.',
     epilog=''
   )
-  parser.add_argument("-bp", "--base-path", type=str, help="common base path shared among input and output file")
+  parser.add_argument("-bp", "--base-path", type=str, help="common base path shared among all input files")
   parser.add_argument("-i", "-in", "--inputs", type=str, help="paths to the input files")
   parser.add_argument("-o", "-out", "--output", type=str, help="path to the output file")
 
@@ -67,5 +71,4 @@ if __name__ == "__main__":
     print("Only one input path specified by at least two are needed to concatenate!")
     exit(1)
 
-  print(input_paths)
   concat(input_paths, args.output, args.base_path)
