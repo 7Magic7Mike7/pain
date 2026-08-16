@@ -9,7 +9,7 @@ import time
 EXPECTED_CHUNK_COUNT = 21_708 * 100_000  # for chunk_size = 100_000, the first performance was done after 21_708 chunks
 # expected time: 4702 s = 78,36 min = 1h18m21
 
-def perform(input_path: str, output_path: str, chunk_size: int, metric: str = "Percent"):
+def perform(input_path: str, output_path: str, chunk_size: int, metric_name: str):
   expected_chunks = int(EXPECTED_CHUNK_COUNT / chunk_size)
   # Create a stripped down dataset with only the needed columns and rows
   input_columns = ["lat", "lon", "cause_name", "pixel_abs_prevalence"]
@@ -40,7 +40,7 @@ def perform(input_path: str, output_path: str, chunk_size: int, metric: str = "P
     while True:
       try:
         chunk = next(reader)
-        filtered_chunk = chunk.loc[chunk["metric_name"] == metric, input_columns]
+        filtered_chunk = chunk.loc[chunk["metric_name"] == metric_name, input_columns]
         if not filtered_chunk.empty:
           filtered_chunk = filtered_chunk.rename(columns=rename_map)
           filtered_chunk = filtered_chunk[writer_columns]
@@ -68,14 +68,14 @@ def perform(input_path: str, output_path: str, chunk_size: int, metric: str = "P
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
-    prog='Data Aggregation Script',
-    description='Aggregates datapoints from an input file in the specified lat/lng resolution and stores them in an output file.',
-    epilog=''
+    prog='Physical Dataset Preparation Script',
+    description=''
   )
   parser.add_argument("-bp", "--base-path", type=str, help="common base path shared among input and output file")
   parser.add_argument("-i", "-in", "--input", type=str, help="path to the input file")
   parser.add_argument("-o", "-out", "--output", type=str, help="path to the output file")
   parser.add_argument("-cs", "--chunk-size", type=int, help="size of the chunks to process while streaming the input file")
+  parser.add_argument("-mn", "--metric-name", type=str, help="name of the metric to filter (default = Percent)")
 
   args = parser.parse_args()
   if not args.input:
@@ -93,9 +93,9 @@ if __name__ == "__main__":
     output_path = args.output
 
   chunk_size = args.chunk_size if args.chunk_size else 100_000
+  metric_name = args.metric_name if args.metric_name else "Percent"
 
   t_start = time.time()
-  perform(input_path, output_path, chunk_size)
+  perform(input_path, output_path, chunk_size, metric_name)
   t_end = time.time()
   print(f"Elapsed time = {t_end - t_start}")
-
